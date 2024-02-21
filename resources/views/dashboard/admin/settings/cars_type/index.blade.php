@@ -51,7 +51,7 @@
     <div class="col-md-8">
         <div class="card">
             <div class="card-body p-0">
-              <table class="table table-striped" id="carsTypeTable">
+              <table class="table table-striped table-sm" id="carsTypeTable">
                     <thead>
                         <tr>
                           <th>نوع السيارة</th>
@@ -73,10 +73,10 @@
                               {{-- <td><img src="{{ asset($key->logo) }}" width="50px" alt=""></td> --}}
                               <td><img src="{{ asset('storage/uploads/carTypeLogo/' . $key->logo) }}" width="50px" alt=""></td>
                               <td>
-                                <button class="btn btn-secondary" onclick="editCarType({{$key}})"><i class="fas fa-edit"></i></button>
-                                <button class="btn btn-danger" onclick="deleteCarType({{$key}})"><i class="fas fa-trash"></i></button>
+                                <button class="btn btn-secondary btn-sm" onclick="editCarType({{$key}})"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-danger btn-sm" onclick="deleteCarType({{$key}})"><i class="fas fa-trash"></i></button>
                               </td>
-                              <td><button class="btn btn-info" onclick='location.href="{{route("dashboard.settings.cars_type.car_models",["id"=>$key->id])}}"'><i class="fas fa-search"></i></button></td>
+                              <td><a class="btn btn-info btn-sm text-center" href="{{route("dashboard.settings.cars_type.car_models",["id"=>$key->id])}}"><i class="fas fa-search"></i></a></td>
                           </tr>
                           @endforeach
                           @endif

@@ -38,13 +38,69 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'],function (){
         Route::post('upload_image',[App\Http\Controllers\dashboard\UserController::class, 'upload_image'])->name('dashboard.users.upload_image');
 
         Route::group(['prefix' => 'insurance_companies'], function () {
-            Route::get('/index', [App\Http\Controllers\dashboard\admin\users\InsuranceCompaniesController::class, 'index'])->name('dashboard.users.insurance_companies.index');
-            Route::get('/add', [App\Http\Controllers\dashboard\admin\users\InsuranceCompaniesController::class, 'add'])->name('dashboard.users.insurance_companies.add');
-            Route::post('create', [App\Http\Controllers\dashboard\admin\users\InsuranceCompaniesController::class, 'create'])->name('dashboard.users.insurance_companies.create');
-            Route::get('edit/{id}', [App\Http\Controllers\dashboard\admin\users\InsuranceCompaniesController::class, 'edit'])->name('dashboard.users.insurance_companies.edit');
-            Route::post('update/{id}', [App\Http\Controllers\dashboard\admin\users\InsuranceCompaniesController::class, 'update'])->name('dashboard.users.insurance_companies.update');
-            Route::get('details/{id}', [App\Http\Controllers\dashboard\admin\users\InsuranceCompaniesController::class, 'details'])->name('dashboard.users.insurance_companies.details');
+            Route::get('/index', [App\Http\Controllers\dashboard\admin\users\AdminsController::class, 'index'])->name('dashboard.users.insurance_companies.index');
+            Route::get('/add', [App\Http\Controllers\dashboard\admin\users\AdminsController::class, 'add'])->name('dashboard.users.insurance_companies.add');
+            Route::post('create', [App\Http\Controllers\dashboard\admin\users\AdminsController::class, 'create'])->name('dashboard.users.insurance_companies.create');
+            Route::get('edit/{id}', [App\Http\Controllers\dashboard\admin\users\AdminsController::class, 'edit'])->name('dashboard.users.insurance_companies.edit');
+            Route::post('update/{id}', [App\Http\Controllers\dashboard\admin\users\AdminsController::class, 'update'])->name('dashboard.users.insurance_companies.update');
+            Route::get('details/{id}', [App\Http\Controllers\dashboard\admin\users\AdminsController::class, 'details'])->name('dashboard.users.insurance_companies.details');
         });
+
+        Route::group(['prefix' => 'admins'], function () {
+            Route::get('/index', [App\Http\Controllers\dashboard\admin\users\AdminsController::class, 'index'])->name('dashboard.users.admins.index');
+            Route::get('/add', [App\Http\Controllers\dashboard\admin\users\AdminsController::class, 'add'])->name('dashboard.users.admins.add');
+            Route::post('create', [App\Http\Controllers\dashboard\admin\users\AdminsController::class, 'create'])->name('dashboard.users.admins.create');
+            Route::get('edit/{id}', [App\Http\Controllers\dashboard\admin\users\AdminsController::class, 'edit'])->name('dashboard.users.admins.edit');
+            Route::post('update/{id}', [App\Http\Controllers\dashboard\admin\users\AdminsController::class, 'update'])->name('dashboard.users.admins.update');
+            Route::get('details/{id}', [App\Http\Controllers\dashboard\admin\users\AdminsController::class, 'details'])->name('dashboard.users.admins.details');
+        });
+
+        Route::group(['prefix' => 'appraiser'], function () {
+            Route::get('/index', [App\Http\Controllers\dashboard\admin\users\AppraiserController::class, 'index'])->name('dashboard.users.appraiser.index');
+            Route::get('/add', [App\Http\Controllers\dashboard\admin\users\AppraiserController::class, 'add'])->name('dashboard.users.appraiser.add');
+            Route::post('create', [App\Http\Controllers\dashboard\admin\users\AppraiserController::class, 'create'])->name('dashboard.users.appraiser.create');
+            Route::get('edit/{id}', [App\Http\Controllers\dashboard\admin\users\AppraiserController::class, 'edit'])->name('dashboard.users.appraiser.edit');
+            Route::post('update/{id}', [App\Http\Controllers\dashboard\admin\users\AppraiserController::class, 'update'])->name('dashboard.users.appraiser.update');
+            Route::get('details/{id}', [App\Http\Controllers\dashboard\admin\users\AppraiserController::class, 'details'])->name('dashboard.users.appraiser.details');
+        });
+
+        Route::group(['prefix' => 'car_part_store'], function () {
+            Route::get('/index', [App\Http\Controllers\dashboard\admin\users\CarPartStoreController::class, 'index'])->name('dashboard.users.car_part_store.index');
+            Route::get('/add', [App\Http\Controllers\dashboard\admin\users\CarPartStoreController::class, 'add'])->name('dashboard.users.car_part_store.add');
+            Route::post('create', [App\Http\Controllers\dashboard\admin\users\CarPartStoreController::class, 'create'])->name('dashboard.users.car_part_store.create');
+            Route::get('edit/{id}', [App\Http\Controllers\dashboard\admin\users\CarPartStoreController::class, 'edit'])->name('dashboard.users.car_part_store.edit');
+            Route::post('update/{id}', [App\Http\Controllers\dashboard\admin\users\CarPartStoreController::class, 'update'])->name('dashboard.users.car_part_store.update');
+            Route::get('details/{id}', [App\Http\Controllers\dashboard\admin\users\CarPartStoreController::class, 'details'])->name('dashboard.users.car_part_store.details');
+        });
+
+        Route::group(['prefix' => 'garage'], function () {
+            Route::get('/index', [App\Http\Controllers\dashboard\admin\users\GarageController::class, 'index'])->name('dashboard.users.garage.index');
+            Route::get('/add', [App\Http\Controllers\dashboard\admin\users\GarageController::class, 'add'])->name('dashboard.users.garage.add');
+            Route::post('create', [App\Http\Controllers\dashboard\admin\users\GarageController::class, 'create'])->name('dashboard.users.garage.create');
+            Route::get('edit/{id}', [App\Http\Controllers\dashboard\admin\users\GarageController::class, 'edit'])->name('dashboard.users.garage.edit');
+            Route::post('update/{id}', [App\Http\Controllers\dashboard\admin\users\GarageController::class, 'update'])->name('dashboard.users.garage.update');
+            Route::get('details/{id}', [App\Http\Controllers\dashboard\admin\users\GarageController::class, 'details'])->name('dashboard.users.garage.details');
+        });
+
+        Route::group(['prefix' => 'tow_truck_owner'], function () {
+            Route::get('/index', [App\Http\Controllers\dashboard\admin\users\TowTruckOwnerController::class, 'index'])->name('dashboard.users.tow_truck_owner.index');
+            Route::get('/add', [App\Http\Controllers\dashboard\admin\users\TowTruckOwnerController::class, 'add'])->name('dashboard.users.tow_truck_owner.add');
+            Route::post('create', [App\Http\Controllers\dashboard\admin\users\TowTruckOwnerController::class, 'create'])->name('dashboard.users.tow_truck_owner.create');
+            Route::get('edit/{id}', [App\Http\Controllers\dashboard\admin\users\TowTruckOwnerController::class, 'edit'])->name('dashboard.users.tow_truck_owner.edit');
+            Route::post('update/{id}', [App\Http\Controllers\dashboard\admin\users\TowTruckOwnerController::class, 'update'])->name('dashboard.users.tow_truck_owner.update');
+            Route::get('details/{id}', [App\Http\Controllers\dashboard\admin\users\TowTruckOwnerController::class, 'details'])->name('dashboard.users.tow_truck_owner.details');
+        });
+
+        Route::group(['prefix' => 'visitor'], function () {
+            Route::get('/index', [App\Http\Controllers\dashboard\admin\users\VisitorController::class, 'index'])->name('dashboard.users.visitor.index');
+            Route::get('/add', [App\Http\Controllers\dashboard\admin\users\VisitorController::class, 'add'])->name('dashboard.users.visitor.add');
+            Route::post('create', [App\Http\Controllers\dashboard\admin\users\VisitorController::class, 'create'])->name('dashboard.users.visitor.create');
+            Route::get('edit/{id}', [App\Http\Controllers\dashboard\admin\users\VisitorController::class, 'edit'])->name('dashboard.users.visitor.edit');
+            Route::post('update/{id}', [App\Http\Controllers\dashboard\admin\users\VisitorController::class, 'update'])->name('dashboard.users.visitor.update');
+            Route::get('details/{id}', [App\Http\Controllers\dashboard\admin\users\VisitorController::class, 'details'])->name('dashboard.users.visitor.details');
+        });
+
+
 
         //{-------------------future work/ users------------------------}//
         Route::group(['prefix' => 'procurement_officer'], function () {

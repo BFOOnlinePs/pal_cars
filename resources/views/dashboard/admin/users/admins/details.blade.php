@@ -375,7 +375,7 @@
                 "X-CSRF-Token": csrfToken
             };
             $.ajax({
-                url: "{{ route('users.update_user_ajax') }}",
+                url: "{{ route('dashboard.users.update_user_ajax') }}",
                 method: 'post',
 
                 headers: headers,
@@ -412,9 +412,10 @@
                 let user_id = {{ $data->id }};
                 var formData = new FormData(this);
                 formData.append('id',user_id);
+                // console.log('hi reem')
                 $.ajax({
                     type: 'POST',
-                    url: "{{ route('users.upload_image') }}",
+                    url: "{{ route('dashboard.users.upload_image') }}",
                     data: formData,
                     cache: false,
                     contentType: false,

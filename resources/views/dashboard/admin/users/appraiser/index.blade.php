@@ -60,8 +60,8 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-success btn-sm" href="{{ route('dashboard.users.insurance_companies.edit',['id'=>$key->id]) }}"><span class="fa fa-edit"></span></a>
-                                                    <a class="btn btn-dark btn-sm" href="{{ route('dashboard.users.insurance_companies.details',['id'=>$key->id]) }}"><span class="fa fa-search"></span></a>
+                                                    <a class="btn btn-success btn-sm" href="{{ route('dashboard.users.appraiser.edit',['id'=>$key->id]) }}"><span class="fa fa-edit"></span></a>
+                                                    <a class="btn btn-dark btn-sm" href="{{ route('dashboard.users.appraiser.details',['id'=>$key->id]) }}"><span class="fa fa-search"></span></a>
                                                 </td>
                                             </tr>
                                         @endforeach
