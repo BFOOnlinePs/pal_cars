@@ -89,7 +89,7 @@
             </a>
         </div> --}}
         <div class="col-md-3 col-sm-6 col-12">
-            <a href="" style="text-decoration: none" class="text-dark">
+            <a href="{{ route('dashboard.users.admins.index') }}" style="text-decoration: none" class="text-dark">
                 <div class="info-box shadow-sm">
                     <span class="info-box-icon bg-info"><i class="far fa-user"></i></span>
                     <div class="info-box-content">
@@ -99,7 +99,7 @@
             </a>
         </div>
         <div class="col-md-3 col-sm-6 col-12">
-            <a href="" style="text-decoration: none" class="text-dark">
+            <a href="{{ route('dashboard.users.insurance_companies.index') }}" style="text-decoration: none" class="text-dark">
                 <div class="info-box shadow-sm">
                     <span class="info-box-icon bg-success"><i class="fas fa-building"></i></span>
                     <div class="info-box-content">
@@ -129,17 +129,17 @@
             </a>
         </div> --}}
         <div class="col-md-3 col-sm-6 col-12">
-            <a href="" style="text-decoration: none" class="text-dark">
+            <a href="{{ route('dashboard.users.appraiser.index') }}" style="text-decoration: none" class="text-dark">
                 <div class="info-box shadow-sm">
                     <span class="info-box-icon bg-warning"><i class="far fa-eye"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">المخمنيين</span>
+                        <span class="info-box-text">المخمنين</span>
                     </div>
                 </div>
             </a>
         </div>
         <div class="col-md-3 col-sm-6 col-12">
-            <a href="" style="text-decoration: none" class="text-dark">
+            <a href="{{ route('dashboard.users.car_part_store.index') }}" style="text-decoration: none" class="text-dark">
                 <div class="info-box shadow-sm">
                     <span class="info-box-icon bg-danger"><i class="fa fa-car"></i></span>
                     <div class="info-box-content">
@@ -149,7 +149,7 @@
             </a>
         </div>
         <div class="col-md-3 col-sm-6 col-12">
-            <a href="" style="text-decoration: none" class="text-dark">
+            <a href="{{ route('dashboard.users.garage.index') }}" style="text-decoration: none" class="text-dark">
                 <div class="info-box shadow-sm">
                     <span class="info-box-icon bg-success"><i class="fa fa-wrench"></i></span>
                     <div class="info-box-content">
@@ -159,7 +159,7 @@
             </a>
         </div>
         <div class="col-md-3 col-sm-6 col-12">
-            <a href="" style="text-decoration: none" class="text-dark">
+            <a href="{{ route('dashboard.users.tow_truck_owner.index') }}" style="text-decoration: none" class="text-dark">
                 <div class="info-box shadow-sm">
                     <span class="info-box-icon bg-danger"><i class="far fa-envelope"></i></span>
                     <div class="info-box-content">
@@ -169,7 +169,7 @@
             </a>
         </div>
         <div class="col-md-3 col-sm-6 col-12">
-            <a href="" style="text-decoration: none" class="text-dark">
+            <a href="{{ route('dashboard.users.visitor.index') }}" style="text-decoration: none" class="text-dark">
                 <div class="info-box shadow-sm">
                     <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
                     <div class="info-box-content">

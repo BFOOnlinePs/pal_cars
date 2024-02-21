@@ -77,7 +77,8 @@ class UserController extends Controller
             $user_levels->user_id = $data->id;
             $user_levels->role_id = json_encode($request->role_level);
             if($user_levels->save()){
-                return redirect()->route('users.supplier.index')->with(['success'=>'تم اضافة البيانات بنجاح','tab_id'=>1]);
+                // return redirect()->route('users.supplier.index')->with(['success'=>'تم اضافة البيانات بنجاح','tab_id'=>1]);
+                return redirect()->route('dashboard.users.index')->with(['success'=>'تم اضافة البيانات بنجاح','tab_id'=>1]);
 
             }
         }

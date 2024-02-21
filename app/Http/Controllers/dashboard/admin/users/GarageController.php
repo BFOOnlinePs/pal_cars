@@ -11,17 +11,17 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class InsuranceCompaniesController extends Controller
+class GarageController extends Controller
 {
     public function index()
     {
-        $data = User::whereJsonContains('user_role', ['8'])->get();
-        return view('dashboard.admin.users.insurance_companies.index', ['data' => $data]);
+        $data = User::whereJsonContains('user_role', ['14'])->get();
+        return view('dashboard.admin.users.garages.index', ['data' => $data]);
     }
 
     public function add()
     {
-        return view('dashboard.admin.users.insurance_companies.add');
+        return view('dashboard.admin.users.garages.add');
     }
 
     public function create(Request $request)
@@ -32,7 +32,7 @@ class InsuranceCompaniesController extends Controller
         $data->password = Hash::make($request->password);
         $data->user_phone1 = $request->user_phone1;
         $data->user_phone2 = $request->user_phone2;
-        $data->user_role = json_encode(['8']);
+        $data->user_role = json_encode(['14']);
         $data->user_status = 1;
         $data->user_reg_date = Carbon::now();
         if ($request->hasFile('user_photo')) {
@@ -53,7 +53,7 @@ class InsuranceCompaniesController extends Controller
         $data->user_swift_code = $request->user_swift_code;
         $data->user_iban_number = $request->user_iban_number;
         if ($data->save()) {
-            return redirect()->route('dashboard.users.insurance_companies.index')->with(['success' => 'تم اضافة البيانات بنجاح']);
+            return redirect()->route('dashboard.users.garage.index')->with(['success' => 'تم اضافة البيانات بنجاح']);
         } else {
             return redirect()->back()->withInput();
         }
@@ -63,7 +63,7 @@ class InsuranceCompaniesController extends Controller
     {
         $data = User::where('id', $id)->first();
         $user_role = UserRole::get();
-        return view('dashboard.admin.users.insurance_companies.edit', ['data' => $data,'user_role'=>$user_role]);
+        return view('dashboard.admin.users.garages.edit', ['data' => $data,'user_role'=>$user_role]);
     }
 
     public function update($id, Request $request)
@@ -94,7 +94,7 @@ class InsuranceCompaniesController extends Controller
         $data->user_swift_code = $request->user_swift_code;
         $data->user_iban_number = $request->user_iban_number;
         if ($data->save()) {
-            return redirect()->route('dashboard.users.insurance_companies.edit', ['id', $id])->with(['success' => 'تم اضافة البيانات بنجاح']);
+            return redirect()->route('dashboard.users.garage.edit', ['id', $id])->with(['success' => 'تم اضافة البيانات بنجاح']);
         } else {
             return redirect()->back()->withInput();
         }
@@ -108,7 +108,7 @@ class InsuranceCompaniesController extends Controller
 //        foreach ($company_contact_person as $key){
 //            $key['company'] = User::where('id',$key->company_id)->first();
 //        }
-        return view('dashboard.admin.users.insurance_companies.details', ['data' => $data, 'company_contact_person' => $company_contact_person]);
+        return view('dashboard.admin.users.garages.details', ['data' => $data, 'company_contact_person' => $company_contact_person]);
     }
 
 }

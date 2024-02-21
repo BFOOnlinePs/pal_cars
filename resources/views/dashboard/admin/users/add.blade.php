@@ -127,10 +127,10 @@
                                                     <div class="form-group">
                                                         <label for="">الصلاحيات</label>
                                                         <br>
-                                                        {{-- @foreach ($user_role as $key)
+                                                        @foreach ($user_role as $key)
                                                             <input name="role_level[]" value="{{ $key->id }}" id="role_user_{{ $loop->index }}" type="checkbox">
                                                             <label for="role_user_{{ $loop->index }}">{{ $key->name }}</label>
-                                                        @endforeach --}}
+                                                        @endforeach
                                                     </div>
 
                                                 </div>

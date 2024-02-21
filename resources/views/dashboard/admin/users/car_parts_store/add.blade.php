@@ -1,24 +1,24 @@
 @extends('dashboard.layouts.app')
 @section('title')
-    اضافة شركة تأمين
+    إضافة مسؤول
 @endsection
 @section('header_title')
-    اضافة شركة تأمين
+    إضافة مسؤول
 @endsection
 @section('header_link')
     المستخدمين
 @endsection
 @section('header_title_link')
-    اضافة شركة تأمين
+    إضافة مسؤول
 @endsection
 @section('content')
 
     <div class="card">
         <div class="card-header text-center">
-            <h5 class="text-bold">اضافة شركة تأمين</h5>
+            <h5 class="text-bold">إضافة محل قطع سيارات</h5>
         </div>
         <div class="card-body">
-            <form action="{{ route('dashboard.users.insurance_companies.create') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('dashboard.users.car_part_store.create') }}" method="post" enctype="multipart/form-data">
 
                 <div class="row">
                     @csrf

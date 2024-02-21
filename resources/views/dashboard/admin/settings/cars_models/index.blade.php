@@ -133,8 +133,6 @@
 
 
     function openPic(data){
-
-
         var pic = data.car_model_pic;
         link= "storage/uploads/carModelsPics/"
         var assetPath = '{{ asset('') }}'+link+pic;
@@ -146,6 +144,9 @@
 
 
     document.getElementById("carsModelForm").addEventListener("submit", function (e){
+        $(document).on('submit',function(e){
+
+        })
 
             e.preventDefault();
 

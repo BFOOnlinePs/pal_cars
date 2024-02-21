@@ -60,8 +60,8 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-success btn-sm" href="{{ route('dashboard.users.insurance_companies.edit',['id'=>$key->id]) }}"><span class="fa fa-edit"></span></a>
-                                                    <a class="btn btn-dark btn-sm" href="{{ route('dashboard.users.insurance_companies.details',['id'=>$key->id]) }}"><span class="fa fa-search"></span></a>
+                                                    <a class="btn btn-success btn-sm" href="{{ route('dashboard.users.admins.edit',['id'=>$key->id]) }}"><span class="fa fa-edit"></span></a>
+                                                    <a class="btn btn-dark btn-sm" href="{{ route('dashboard.users.admins.details',['id'=>$key->id]) }}"><span class="fa fa-search"></span></a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -77,7 +77,7 @@
         <div class="col-md-2">
             <div class="row">
                 <div class="col-md-12">
-                    <a href="{{ route('dashboard.users.insurance_companies.add') }}" class="btn form-control btn-dark mb-2">اضافة شركة تأمين</a>
+                    <a href="{{ route('dashboard.users.admins.add') }}" class="btn form-control btn-dark mb-2">اضافة شركة تأمين</a>
 
                 </div>
                 <div class="col-md-12 mt-4">
