@@ -1,21 +1,21 @@
 @extends('dashboard.layouts.app')
 @section('title')
-    إضافة مسؤول
+    إضافة كراج
 @endsection
 @section('header_title')
-    إضافة مسؤول
+    إضافة كراج
 @endsection
 @section('header_link')
-    المستخدمين
+    <a href="{{route('dashboard.users.index')}}">المستخدمين</a>
 @endsection
 @section('header_title_link')
-    إضافة مسؤول
+    إضافة كراج
 @endsection
 @section('content')
 
     <div class="card">
         <div class="card-header text-center">
-            <h5 class="text-bold">إضافة مسؤول نظام</h5>
+            <h5 class="text-bold">إضافة كراج</h5>
         </div>
         <div class="card-body">
             <form action="{{ route('dashboard.users.garage.create') }}" method="post" enctype="multipart/form-data">

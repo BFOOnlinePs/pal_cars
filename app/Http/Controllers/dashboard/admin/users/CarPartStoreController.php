@@ -21,7 +21,7 @@ class CarPartStoreController extends Controller
 
     public function add()
     {
-        return view('dashboard.admin.users.cart_parts_store.add');
+        return view('dashboard.admin.users.car_parts_store.add');
     }
 
     public function create(Request $request)
@@ -53,7 +53,7 @@ class CarPartStoreController extends Controller
         $data->user_swift_code = $request->user_swift_code;
         $data->user_iban_number = $request->user_iban_number;
         if ($data->save()) {
-            return redirect()->route('dashboard.users.cart_part_store.index')->with(['success' => 'تم اضافة البيانات بنجاح']);
+            return redirect()->route('dashboard.users.car_part_store.index')->with(['success' => 'تم اضافة البيانات بنجاح']);
         } else {
             return redirect()->back()->withInput();
         }
@@ -63,7 +63,7 @@ class CarPartStoreController extends Controller
     {
         $data = User::where('id', $id)->first();
         $user_role = UserRole::get();
-        return view('dashboard.admin.users.cart_parts_store.edit', ['data' => $data,'user_role'=>$user_role]);
+        return view('dashboard.admin.users.car_parts_store.edit', ['data' => $data,'user_role'=>$user_role]);
     }
 
     public function update($id, Request $request)
@@ -94,7 +94,7 @@ class CarPartStoreController extends Controller
         $data->user_swift_code = $request->user_swift_code;
         $data->user_iban_number = $request->user_iban_number;
         if ($data->save()) {
-            return redirect()->route('dashboard.users.cart_part_store.edit', ['id', $id])->with(['success' => 'تم اضافة البيانات بنجاح']);
+            return redirect()->route('dashboard.users.car_part_store.edit', ['id', $id])->with(['success' => 'تم اضافة البيانات بنجاح']);
         } else {
             return redirect()->back()->withInput();
         }
@@ -108,7 +108,7 @@ class CarPartStoreController extends Controller
 //        foreach ($company_contact_person as $key){
 //            $key['company'] = User::where('id',$key->company_id)->first();
 //        }
-        return view('dashboard.admin.users.cart_parts_store.details', ['data' => $data, 'company_contact_person' => $company_contact_person]);
+        return view('dashboard.admin.users.car_parts_store.details', ['data' => $data, 'company_contact_person' => $company_contact_person]);
     }
 
 }

@@ -60,7 +60,7 @@ class UserController extends Controller
             $file = $request->file('user_photo');
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;
-            $file->storeAs('user_photo', $filename, 'public');
+            $file->storeAs('uploads/usersImages', $filename, 'public');
             $data->user_photo = $filename;
         }
         $data->user_notes = $request->user_notes;
@@ -101,12 +101,12 @@ class UserController extends Controller
         }
         $data->user_phone1 = $request->user_phone1;
         $data->user_phone2 = $request->user_phone2;
-        if ($request->photo != ''){
+        if ($request->user_photo != ''){
             if ($request->hasFile('user_photo')) {
                 $file = $request->file('user_photo');
                 $extension = $file->getClientOriginalExtension();
                 $filename = time() . '.' . $extension;
-                $file->storeAs('user_photo', $filename, 'public');
+                $file->storeAs('uploads/usersImages', $filename, 'public');
                 $data->user_photo = $filename;
             }
         }
@@ -121,7 +121,8 @@ class UserController extends Controller
         $data->user_iban_number = $request->user_iban_number;
         $data->user_role = json_encode($request->role_level);
         if ($data->save()) {
-            return redirect()->route('users.supplier.edit', ['id'=>$id])->with(['success'=>'تم تعديل البيانات بنجاح','tab_id'=>1]);
+            // return redirect()->route('users.supplier.edit', ['id'=>$id])->with(['success'=>'تم تعديل البيانات بنجاح','tab_id'=>1]);
+            return redirect()->route('dashboard.users.index', ['id'=>$id])->with(['success'=>'تم تعديل البيانات بنجاح','tab_id'=>1]);
         } else {
             return redirect()->back()->withInput();
         }
@@ -170,7 +171,8 @@ class UserController extends Controller
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;
-            $file->storeAs('user_photo', $filename, 'public');
+            // $file->storeAs('user_photo', $filename, 'public');
+            $file->storeAs('uploads/usersImages', $filename, 'public');
             $data->user_photo = $filename;
             if ($data->save()){
                 return response()->json([

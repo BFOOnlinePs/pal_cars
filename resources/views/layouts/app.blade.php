@@ -1,87 +1,136 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>@yield('title')</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
+    <!-- Google Font: Source Sans Pro -->
+    {{--    <link rel="stylesheet" href="{{ asset('assets/fonts/Tajawal/SansPro.min.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap_rtl-v4.2.1/bootstrap.min.css') }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap_rtl-v4.2.1/custom_rtl.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/mycustomstyle.css') }}">
 
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-ui/jquery-ui.css') }}">
+    @yield('style')
+    <link rel="stylesheet" href="{{ asset('assets/plugins/toastr/toastr.min.css') }}">
+    <style>
+        * {
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        #calendar {
+            direction: ltr !important;
+        }
+
+    </style>
+
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+<body class="layout-top-nav" style="height: auto;" data-new-gr-c-s-check-loaded="14.1147.0" data-gr-ext-installed
+    cz-shortcut-listen="true">
+    <div class="wrapper">
+        <!-- Navbar -->
+        @include('layouts.navbar')
+        <!-- /.navbar -->
 
-                    </ul>
+        <!-- Main Sidebar Container -->
+        {{-- @include('layouts.sidebar') --}}
+        <!-- Content Wrapper. Contains page content -->
+        @include('layouts.content')
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
+        <div class="modal fade" id="modal-lg-view_attachment">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <iframe id="view_attachment_result" src="" frameborder="0" width="100%"
+                            style="height: 550px">
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-
-
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('web_app_home') }}">
-                                    web home page
-                                </a>
-                            </li>
-                        @endguest
-                    </ul>
+                        </iframe>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">اغلاق</button>
+                    </div>
                 </div>
             </div>
-        </nav>
+        </div>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <!-- /.content-wrapper -->
+
+        <!-- Control Sidebar -->
+
+        <!-- /.control-sidebar -->
+
+        <!-- Main Footer -->
+        @include('layouts.footer')
     </div>
+    <!-- ./wrapper -->
+
+    <!-- REQUIRED SCRIPTS -->
+
+    <!-- jQuery -->
+    <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
+
+    <script src="{{ asset('assets/plugins/jquery-ui/jquery-ui.js') }}"></script>
+
+    <script>
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+
+        // $(function() {
+        //     // Select all input elements with type="date" and apply Datepicker
+        //     $('.date_format').datepicker({
+        //         dateFormat: 'yy-mm-dd'
+        //     });
+        // });
+    </script>
+
+    @yield('script')
+    <script src="{{ asset('assets/plugins/toastr/toastr.min.js') }}"></script>
+
+    <script>
+        function viewAttachment(url) {
+            document.getElementById('view_attachment_result').src = url;
+        }
+
+        function numberFormat(value, decimals = 2) {
+            // Convert the value to a float with specified decimals
+            const floatValue = parseFloat(value);
+
+            // Check if the conversion was successful
+            if (isNaN(floatValue)) {
+                throw new Error('Invalid value provided');
+            }
+
+            // Use toFixed to round to the specified number of decimals
+            const roundedValue = floatValue.toFixed(decimals);
+
+            // Use Number() to convert back to a number (removes trailing zeros)
+            return Number(roundedValue);
+        }
+
+    </script>
 </body>
+
 </html>

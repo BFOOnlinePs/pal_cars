@@ -108,7 +108,7 @@ class AdminsController extends Controller
 //        foreach ($company_contact_person as $key){
 //            $key['company'] = User::where('id',$key->company_id)->first();
 //        }
-        return view('dashboard.admin.users.insurance_companies.details', ['data' => $data, 'company_contact_person' => $company_contact_person]);
+        return view('dashboard.admin.users.admins.details', ['data' => $data, 'company_contact_person' => $company_contact_person]);
     }
 
 }

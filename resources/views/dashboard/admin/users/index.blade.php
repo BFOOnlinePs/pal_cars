@@ -91,7 +91,8 @@
         <div class="col-md-3 col-sm-6 col-12">
             <a href="{{ route('dashboard.users.admins.index') }}" style="text-decoration: none" class="text-dark">
                 <div class="info-box shadow-sm">
-                    <span class="info-box-icon bg-info"><i class="far fa-user"></i></span>
+                    {{-- <span class="info-box-icon bg-info"><i class="far fa-user"></i></span> --}}
+                    <span class="info-box-icon bg-info"><i class="fas fa-user-shield"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">المسؤولين</span>
                     </div>
@@ -151,7 +152,7 @@
         <div class="col-md-3 col-sm-6 col-12">
             <a href="{{ route('dashboard.users.garage.index') }}" style="text-decoration: none" class="text-dark">
                 <div class="info-box shadow-sm">
-                    <span class="info-box-icon bg-success"><i class="fa fa-wrench"></i></span>
+                    <span class="info-box-icon bg-warning"><i class="fa fa-wrench"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">كراجات السيارات</span>
                     </div>
@@ -161,7 +162,7 @@
         <div class="col-md-3 col-sm-6 col-12">
             <a href="{{ route('dashboard.users.tow_truck_owner.index') }}" style="text-decoration: none" class="text-dark">
                 <div class="info-box shadow-sm">
-                    <span class="info-box-icon bg-danger"><i class="far fa-envelope"></i></span>
+                    <span class="info-box-icon bg-danger"><i class="fa fa-truck"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">أصحاب الونشات</span>
                     </div>
@@ -171,7 +172,7 @@
         <div class="col-md-3 col-sm-6 col-12">
             <a href="{{ route('dashboard.users.visitor.index') }}" style="text-decoration: none" class="text-dark">
                 <div class="info-box shadow-sm">
-                    <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
+                    <span class="info-box-icon bg-info"><i class="fa fa-users"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">الزوار</span>
                     </div>
