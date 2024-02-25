@@ -223,6 +223,9 @@
         {{-- </ul> --}}
     </div>
     <div class="mt-1">
+
+        <a class="btn btn-sm btn-success" href="{{route("home")}}">الموقع</a>
+
         <a class="text-danger" style="font-size: 12px" href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">( تسجيل الخروج )</a>
 
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

@@ -1,15 +1,15 @@
 @extends('dashboard.layouts.app')
 @section('title')
-    شركات التأمين
+    أصحاب الونشات
 @endsection
 @section('header_title')
-    شركات التأمين
+    أصحاب الونشات
 @endsection
 @section('header_link')
-    المستخدمين
+    <a href="{{route('dashboard.users.index')}}">المستخدمين</a>
 @endsection
 @section('header_title_link')
-    شركات التأمين
+    أصحاب الونشات
 @endsection
 @section('style')
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
@@ -77,7 +77,7 @@
         <div class="col-md-2">
             <div class="row">
                 <div class="col-md-12">
-                    <a href="{{ route('dashboard.users.tow_truck_owner.add') }}" class="btn form-control btn-dark mb-2">اضافة شركة تأمين</a>
+                    <a href="{{ route('dashboard.users.tow_truck_owner.add') }}" class="btn form-control btn-dark mb-2">اضافة صاحب ونش</a>
 
                 </div>
                 <div class="col-md-12 mt-4">

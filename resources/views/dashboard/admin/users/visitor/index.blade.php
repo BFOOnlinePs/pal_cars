@@ -1,15 +1,15 @@
 @extends('dashboard.layouts.app')
 @section('title')
-    شركات التأمين
+    الزوار
 @endsection
 @section('header_title')
-    شركات التأمين
+    الزوار
 @endsection
 @section('header_link')
-    المستخدمين
+    <a href="{{route('dashboard.users.index')}}">المستخدمين</a>
 @endsection
 @section('header_title_link')
-    شركات التأمين
+    الزوار
 @endsection
 @section('style')
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
@@ -20,7 +20,7 @@
         <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="text-center">قائمة شركات التأمين</h3>
+                        <h3 class="text-center">قائمة الزوار</h3>
                     </div>
 
                     <div class="card-body">
@@ -60,8 +60,8 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-success btn-sm" href="{{ route('dashboard.users.tow_truck_owner.edit',['id'=>$key->id]) }}"><span class="fa fa-edit"></span></a>
-                                                    <a class="btn btn-dark btn-sm" href="{{ route('dashboard.users.tow_truck_owner.details',['id'=>$key->id]) }}"><span class="fa fa-search"></span></a>
+                                                    <a class="btn btn-success btn-sm" href="{{ route('dashboard.users.visitor.edit',['id'=>$key->id]) }}"><span class="fa fa-edit"></span></a>
+                                                    <a class="btn btn-dark btn-sm" href="{{ route('dashboard.users.visitor.details',['id'=>$key->id]) }}"><span class="fa fa-search"></span></a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -77,7 +77,7 @@
         <div class="col-md-2">
             <div class="row">
                 <div class="col-md-12">
-                    <a href="{{ route('dashboard.users.tow_truck_owner.add') }}" class="btn form-control btn-dark mb-2">اضافة شركة تأمين</a>
+                    <a href="{{ route('dashboard.users.visitor.add') }}" class="btn form-control btn-dark mb-2">اضافة زائر</a>
 
                 </div>
                 <div class="col-md-12 mt-4">

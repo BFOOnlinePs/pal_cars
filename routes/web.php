@@ -38,12 +38,15 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'],function (){
         Route::post('upload_image',[App\Http\Controllers\dashboard\UserController::class, 'upload_image'])->name('dashboard.users.upload_image');
 
         Route::group(['prefix' => 'insurance_companies'], function () {
-            Route::get('/index', [App\Http\Controllers\dashboard\admin\users\AdminsController::class, 'index'])->name('dashboard.users.insurance_companies.index');
-            Route::get('/add', [App\Http\Controllers\dashboard\admin\users\AdminsController::class, 'add'])->name('dashboard.users.insurance_companies.add');
-            Route::post('create', [App\Http\Controllers\dashboard\admin\users\AdminsController::class, 'create'])->name('dashboard.users.insurance_companies.create');
-            Route::get('edit/{id}', [App\Http\Controllers\dashboard\admin\users\AdminsController::class, 'edit'])->name('dashboard.users.insurance_companies.edit');
-            Route::post('update/{id}', [App\Http\Controllers\dashboard\admin\users\AdminsController::class, 'update'])->name('dashboard.users.insurance_companies.update');
-            Route::get('details/{id}', [App\Http\Controllers\dashboard\admin\users\AdminsController::class, 'details'])->name('dashboard.users.insurance_companies.details');
+            Route::get('/index', [App\Http\Controllers\dashboard\admin\users\InsuranceCompaniesController::class, 'index'])->name('dashboard.users.insurance_companies.index');
+            Route::get('/add', [App\Http\Controllers\dashboard\admin\users\InsuranceCompaniesController::class, 'add'])->name('dashboard.users.insurance_companies.add');
+            Route::post('create', [App\Http\Controllers\dashboard\admin\users\InsuranceCompaniesController::class, 'create'])->name('dashboard.users.insurance_companies.create');
+            Route::get('edit/{id}', [App\Http\Controllers\dashboard\admin\users\InsuranceCompaniesController::class, 'edit'])->name('dashboard.users.insurance_companies.edit');
+            Route::post('update/{id}', [App\Http\Controllers\dashboard\admin\users\InsuranceCompaniesController::class, 'update'])->name('dashboard.users.insurance_companies.update');
+            Route::get('details/{id}', [App\Http\Controllers\dashboard\admin\users\InsuranceCompaniesController::class, 'details'])->name('dashboard.users.insurance_companies.details');
+            Route::group(['prefix' => 'contact_person'], function () {
+                Route::post('create', [App\Http\Controllers\dashboard\admin\users\InsuranceCompaniesController::class, 'createContactPerson'])->name('dashboard.users.insurance_companies.contact_person.create');
+            });
         });
 
         Route::group(['prefix' => 'admins'], function () {

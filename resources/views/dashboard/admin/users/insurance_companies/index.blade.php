@@ -6,7 +6,7 @@
     شركات التأمين
 @endsection
 @section('header_link')
-    المستخدمين
+    <a href="{{route('dashboard.users.index')}}">المستخدمين</a>
 @endsection
 @section('header_title_link')
     شركات التأمين

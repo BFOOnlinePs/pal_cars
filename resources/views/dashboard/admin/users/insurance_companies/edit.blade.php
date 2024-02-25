@@ -6,7 +6,7 @@
     تعديل شركات التأمين
 @endsection
 @section('header_link')
-    المستخدمين
+    <a href="{{route('dashboard.users.index')}}">المستخدمين</a>
 @endsection
 @section('header_title_link')
     تعديل شركات التأمين
@@ -15,10 +15,10 @@
 
     <div class="card">
         <div class="card-header text-center">
-            <h5 class="text-bold">تعديل المورد ( {{ $data->name }} )</h5>
+            <h5 class="text-bold">تعديل شركة التأمين ( {{ $data->name }} )</h5>
         </div>
         <div class="card-body">
-            <form action="{{ route('users.update',['id'=>$data->id]) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('dashboard.users.update',['id'=>$data->id]) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
@@ -88,7 +88,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputFile">الصورة الشخصية</label>
-                                                <img width="150" src="{{ asset('storage/user_photo/'. $data->user_photo) }}" alt="">
+                                                <img width="150" src="{{ asset('storage/uploads/usersImages/'. $data->user_photo) }}" alt="">
                                                 <div class="input-group mt-3">
                                                     <div class="custom-file">
                                                         <input value="{{ old('user_photo') }}" name="user_photo"

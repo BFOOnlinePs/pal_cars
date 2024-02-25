@@ -1,35 +1,38 @@
 @extends('dashboard.layouts.app')
 @section('title')
-    تعديل شركات التأمين
+    تعديل مسؤول النظام
 @endsection
 @section('header_title')
-    تعديل شركات التأمين
+    تعديل مسؤول النظام
 @endsection
 @section('header_link')
-    المستخدمين
+    <a href="{{route('dashboard.users.index')}}">المستخدمين</a>
 @endsection
 @section('header_title_link')
-    تعديل شركات التأمين
+    تعديل مسؤول النظام
 @endsection
 @section('content')
 
     <div class="card">
         <div class="card-header text-center">
-            <h5 class="text-bold">تعديل المورد ( {{ $data->name }} )</h5>
+            <h5 class="text-bold">تعديل مسؤول النظام ( {{ $data->name }} )</h5>
         </div>
-        <div class="card-body">
+        {{-- <div class="card-body"> --}}
             <form action="{{ route('dashboard.users.update',['id'=>$data->id]) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div>
-                            <div class="card card-warning">
-                                <div class="card-header text-center">
+                            {{-- <div class="card card-warning"> --}}
+                                {{-- <div class="card-header text-center">
                                     <span>المعلومات العامة</span>
-                                </div>
+                                </div> --}}
+
                                 <div class="card-body p-4">
                                     <div class="row">
                                         <div class="col">
+                                            <h5 class="alert alert-warning">المعلومات العامة</h5>
+
                                             <div class="form-group">
                                                 <label for="">الاسم الكامل</label>
                                                 <input value="{{ old('name',$data->name) }}" placeholder="الاسم الكامل" name="name" class="form-control"
@@ -88,7 +91,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputFile">الصورة الشخصية</label>
-                                                <img width="150" src="{{ asset('storage/user_photo/'. $data->user_photo) }}" alt="">
+                                                <img width="150" src="{{ asset('storage/uploads/usersImages/'. $data->user_photo) }}" alt="">
                                                 <div class="input-group mt-3">
                                                     <div class="custom-file">
                                                         <input value="{{ old('user_photo') }}" name="user_photo"
@@ -129,14 +132,20 @@
                                                 <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
+
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button type="submit" class="btn btn-success btn-block"><i
+                                                    class="fa-solid fa-floppy-disk"></i> تعديل
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            {{-- </div> --}}
                         </div>
 
                     </div>
-                    <div class="col-md-6">
+                    {{-- <div class="col-md-6">
                         <div>
                             <div class="card card-danger">
                                 <div class="card-header text-center">
@@ -178,10 +187,10 @@
                                     class="fa-solid fa-floppy-disk"></i> تعديل
                             </button>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </form>
-        </div>
+        {{-- </div> --}}
     </div>
 @endsection
 

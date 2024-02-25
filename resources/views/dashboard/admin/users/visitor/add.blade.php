@@ -1,24 +1,24 @@
 @extends('dashboard.layouts.app')
 @section('title')
-    إضافة مسؤول
+    إضافة زائر
 @endsection
 @section('header_title')
-    إضافة مسؤول
+    إضافة زائر
 @endsection
 @section('header_link')
-    المستخدمين
+    <a href="{{route('dashboard.users.index')}}">المستخدمين</a>
 @endsection
 @section('header_title_link')
-    إضافة مسؤول
+    إضافة زائر
 @endsection
 @section('content')
 
     <div class="card">
         <div class="card-header text-center">
-            <h5 class="text-bold">إضافة مسؤول نظام</h5>
+            <h5 class="text-bold">إضافة زائر</h5>
         </div>
         <div class="card-body">
-            <form action="{{ route('dashboard.users.tow_truck_owner.create') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('dashboard.users.visitor.create') }}" method="post" enctype="multipart/form-data">
 
                 <div class="row">
                     @csrf

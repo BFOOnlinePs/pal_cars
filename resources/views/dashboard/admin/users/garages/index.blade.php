@@ -1,15 +1,15 @@
 @extends('dashboard.layouts.app')
 @section('title')
-    شركات التأمين
+    الكراجات
 @endsection
 @section('header_title')
-    شركات التأمين
+    الكراجات
 @endsection
 @section('header_link')
-    المستخدمين
+    <a href="{{route('dashboard.users.index')}}">المستخدمين</a>
 @endsection
 @section('header_title_link')
-    شركات التأمين
+    الكراجات
 @endsection
 @section('style')
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
@@ -20,7 +20,7 @@
         <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="text-center">قائمة شركات التأمين</h3>
+                        <h3 class="text-center">قائمة الكراجات</h3>
                     </div>
 
                     <div class="card-body">
@@ -77,7 +77,7 @@
         <div class="col-md-2">
             <div class="row">
                 <div class="col-md-12">
-                    <a href="{{ route('dashboard.users.garage.add') }}" class="btn form-control btn-dark mb-2">اضافة شركة تأمين</a>
+                    <a href="{{ route('dashboard.users.garage.add') }}" class="btn form-control btn-dark mb-2">اضافة كراج</a>
 
                 </div>
                 <div class="col-md-12 mt-4">

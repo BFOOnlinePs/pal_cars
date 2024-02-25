@@ -6,24 +6,28 @@
     تفاصيل شركة التأمين
 @endsection
 @section('header_link')
-    المستخدمين
+    <a href="{{route('dashboard.users.index')}}">المستخدمين</a>
 @endsection
 @section('header_title_link')
     تفاصيل شركة التأمين
 @endsection
+@section('style')
+
+
+@endsection
 @section('content')
-    @include('admin.messge_alert.success')
-    @include('admin.messge_alert.fail')
+    @include('dashboard.admin.messge_alert.success')
+    @include('dashboard.admin.messge_alert.fail')
     <div class="card">
         <div class="card-header text-center">
-            <h5 class="text-bold">تفاصيل المورد ( {{ $data->name }} )</h5>
+            <h5 class="text-bold">تفاصيل شركة التأمين ( {{ $data->name }} )</h5>
         </div>
         <div class="card-body">
             {{--            <form action="{{ route('users.supplier.create') }}" method="post" enctype="multipart/form-data">--}}
 
             <div class="row">
                 @csrf
-                <div class="col-md-4">
+                <div class="col-md-12">
                     <div id="accordion">
                         <div class="card card-warning">
                             <div class="card-header">
@@ -97,9 +101,9 @@
                                             <div class="col-md-4 pt-5 text-center">
                                                 <div class="form-group text-center">
                                                     @if(empty($data->user_photo))
-                                                        <img id="image_preview_container" width="150" src="{{ asset('storage/user_photo/'.$data->user_photo) }}" alt="">
+                                                        <img id="image_preview_container" width="150" src="{{ asset('storage/uploads/usersImages/'.$data->user_photo) }}" alt="">
                                                     @else
-                                                        <img id="image_preview_container" width="150" src="{{ asset('storage/user_photo/'.$data->user_photo) }}" alt="">
+                                                        <img id="image_preview_container" width="150" src="{{ asset('storage/uploads/usersImages/'.$data->user_photo) }}" alt="">
                                                     @endif
                                                 </div>
                                                 <div>
@@ -185,7 +189,8 @@
                                         </button>
                                         <div class="modal fade" id="modal-default">
                                             <div class="modal-dialog">
-                                                <form action="{{ route('company_contact_person.supplier.create') }}" method="post" enctype="multipart/form-data">
+                                                <form action="{{ route('dashboard.users.insurance_companies.contact_person.create') }}" method="post" enctype="multipart/form-data">
+                                                {{-- <form action="" method="post" enctype="multipart/form-data"> --}}
                                                     @csrf
                                                     <input type="text" hidden name="company_id" value="{{ $data->id }}">
                                                     <div class="modal-content">
@@ -283,7 +288,7 @@
                     </div>
 
                 </div>
-                <div class="col-md-8">
+                {{-- <div class="col-md-8">
                     <div>
                         <div class="card card-info">
                             <div class="card-header text-center">
@@ -336,12 +341,8 @@
                             </div>
                         </div>
                     </div>
-                    {{--                        <div class="col-md-12">--}}
-                    {{--                            <button type="submit" class="btn btn-success btn-block"><i--}}
-                    {{--                                    class="fa-solid fa-floppy-disk"></i> حفظ--}}
-                    {{--                            </button>--}}
-                    {{--                        </div>--}}
-                </div>
+
+                </div> --}}
             </div>
 
             {{--            </form>--}}
@@ -366,6 +367,8 @@
     <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 
+    
+
     <script>
         function update_user_ajax(data_type,value)
         {
@@ -375,7 +378,7 @@
                 "X-CSRF-Token": csrfToken
             };
             $.ajax({
-                url: "{{ route('users.update_user_ajax') }}",
+                url: "{{ route('dashboard.users.update_user_ajax') }}",
                 method: 'post',
 
                 headers: headers,
@@ -387,6 +390,7 @@
                 success: function(data) {
                     if(data.success == 'true'){
                         toastr.success(data.message)
+                        console.log("hi")
                     }
                     else{
                         toastr.error(data.message)
@@ -414,7 +418,7 @@
                 formData.append('id',user_id);
                 $.ajax({
                     type: 'POST',
-                    url: "{{ route('users.upload_image') }}",
+                    url: "{{ route('dashboard.users.upload_image') }}",
                     data: formData,
                     cache: false,
                     contentType: false,

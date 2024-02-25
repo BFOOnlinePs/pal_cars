@@ -105,10 +105,36 @@ class InsuranceCompaniesController extends Controller
     {
         $data = User::where('id', $id)->first();
         $company_contact_person = CompanyContactPersonModel::where('company_id', $id)->get();
-//        foreach ($company_contact_person as $key){
-//            $key['company'] = User::where('id',$key->company_id)->first();
-//        }
+        foreach ($company_contact_person as $key){
+            $key['company'] = User::where('id',$key->company_id)->first();
+        }
         return view('dashboard.admin.users.insurance_companies.details', ['data' => $data, 'company_contact_person' => $company_contact_person]);
+    }
+
+    public function createContactPerson(Request $request){
+        $data = new CompanyContactPersonModel();
+        $data->company_id = $request->company_id;
+        $data->contact_name = $request->contact_name;
+        $data->mobile_number = $request->mobile_number;
+        $data->email = $request->email;
+        $data->whats_app_number = $request->whats_app_number;
+        $data->wechat_number = $request->wechat_number;
+        $data->address = $request->address;
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->storeAs('user_photo', $filename, 'public');
+            $data->photo = $filename;
+        }
+        if ($data->save()){
+            // return redirect()->route('users.supplier.details',['id'=>$request->company_id])->with(['success'=>'تم اضافة جهة التواصل بنجاح','tab_id'=>3]);
+            return view('dashboard.admin.users.index')->with(['success'=>'تم اضافة جهة التواصل بنجاح','tab_id'=>3]);
+        }
+        else{
+            // return redirect()->route('users.supplier.details',['id'=>$request->company_id])->with(['fail'=>'لم تتم الاضافة هناك خلل ما','tab_id'=>3]);
+            return view('dashboard.admin.users.index')->with(['fail'=>'لم تتم الاضافة هناك خلل ما','tab_id'=>3]);
+        }
     }
 
 }

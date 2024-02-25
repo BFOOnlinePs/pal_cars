@@ -1,29 +1,29 @@
 @extends('dashboard.layouts.app')
 @section('title')
-    تفاصيل شركة التأمين
+    تفاصيل المسؤول
 @endsection
 @section('header_title')
-    تفاصيل شركة التأمين
+    تفاصيل المسؤول
 @endsection
 @section('header_link')
-    المستخدمين
+    <a href="{{route('dashboard.users.index')}}">المستخدمين</a>
 @endsection
 @section('header_title_link')
-    تفاصيل شركة التأمين
+    تفاصيل المسؤول
 @endsection
 @section('content')
-    @include('admin.messge_alert.success')
-    @include('admin.messge_alert.fail')
+    @include('dashboard.admin.messge_alert.success')
+    @include('dashboard.admin.messge_alert.fail')
     <div class="card">
         <div class="card-header text-center">
-            <h5 class="text-bold">تفاصيل المورد ( {{ $data->name }} )</h5>
+            <h5 class="text-bold">تفاصيل المسؤول ( {{ $data->name }} )</h5>
         </div>
         <div class="card-body">
             {{--            <form action="{{ route('users.supplier.create') }}" method="post" enctype="multipart/form-data">--}}
 
             <div class="row">
                 @csrf
-                <div class="col-md-4">
+                <div class="col-md-12">
                     <div id="accordion">
                         <div class="card card-warning">
                             <div class="card-header">
@@ -97,9 +97,9 @@
                                             <div class="col-md-4 pt-5 text-center">
                                                 <div class="form-group text-center">
                                                     @if(empty($data->user_photo))
-                                                        <img id="image_preview_container" width="150" src="{{ asset('storage/user_photo/'.$data->user_photo) }}" alt="">
+                                                        <img id="image_preview_container" width="150" src="{{ asset('storage/uploads/usersImages/'.$data->user_photo) }}" alt="">
                                                     @else
-                                                        <img id="image_preview_container" width="150" src="{{ asset('storage/user_photo/'.$data->user_photo) }}" alt="">
+                                                        <img id="image_preview_container" width="150" src="{{ asset('storage/uploads/usersImages/'.$data->user_photo) }}" alt="">
                                                     @endif
                                                 </div>
                                                 <div>
@@ -126,7 +126,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card card-danger">
+                        {{-- <div class="card card-danger">
                             <div class="card-header">
                                 <h4 class="card-title w-100">
                                     <a class="d-block w-100 collapsed" data-toggle="collapse" href="#collapseTwo"
@@ -165,8 +165,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card card-info">
+                        </div> --}}
+                        {{-- <div class="card card-info">
                             <div class="card-header">
                                 <h4 class="card-title w-100">
                                     <a class="d-block w-100" data-toggle="collapse" href="#collapseThree"
@@ -186,6 +186,7 @@
                                         <div class="modal fade" id="modal-default">
                                             <div class="modal-dialog">
                                                 <form action="{{ route('company_contact_person.supplier.create') }}" method="post" enctype="multipart/form-data">
+                                                <form action="" method="post" enctype="multipart/form-data">
                                                     @csrf
                                                     <input type="text" hidden name="company_id" value="{{ $data->id }}">
                                                     <div class="modal-content">
@@ -279,11 +280,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
 
                 </div>
-                <div class="col-md-8">
+                {{-- <div class="col-md-8">
                     <div>
                         <div class="card card-info">
                             <div class="card-header text-center">
@@ -336,12 +337,7 @@
                             </div>
                         </div>
                     </div>
-                    {{--                        <div class="col-md-12">--}}
-                    {{--                            <button type="submit" class="btn btn-success btn-block"><i--}}
-                    {{--                                    class="fa-solid fa-floppy-disk"></i> حفظ--}}
-                    {{--                            </button>--}}
-                    {{--                        </div>--}}
-                </div>
+                </div> --}}
             </div>
 
             {{--            </form>--}}
