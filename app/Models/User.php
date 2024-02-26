@@ -12,6 +12,8 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $table = 'users';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -21,6 +23,17 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'user_phone1',
+        'user_phone2',
+        'user_role',
+        'user_status',
+        'user_reg_date',
+        'user_photo',
+        'user_notes',
+        'user_city',
+        'user_website',
+        'user_address',
+        'user_category',
     ];
 
     /**
