@@ -109,6 +109,7 @@
                         {{-- <a href="{{route('dashboard.settings.cities.index')}}">test</a> --}}
                         <li><a href="{{route('dashboard.settings.cities.index')}}" class="dropdown-item">المدن</a></li>
                         <li><a href="{{route('dashboard.settings.cars_type.index')}}" class="dropdown-item">أنواع السيارات</a></li>
+                        <li><a href="{{route('dashboard.settings.cars_type.index')}}" class="dropdown-item">شروط الاستخدام</a></li>
                     </ul>
                 </li>
             </ul>
