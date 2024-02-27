@@ -400,6 +400,7 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'],function (){
     });
     Route::group(['prefix'=>'settings'],function (){
         Route::get('index',[App\Http\Controllers\dashboard\admin\settings\SettingsController::class , 'index'])->name('dashboard.settings.index');
+
         Route::group(['prefix'=>'cities'],function (){
             Route::get('index',[App\Http\Controllers\dashboard\admin\settings\CitiesController::class , 'index'])->name('dashboard.settings.cities.index');
             Route::post('create',[App\Http\Controllers\dashboard\admin\settings\CitiesController::class , 'create'])->name('dashboard.settings.cities.create');
@@ -415,6 +416,10 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'],function (){
             Route::post('createCarModel',[App\Http\Controllers\dashboard\admin\settings\CarsTypeController::class , 'createCarModel'])->name('dashboard.settings.cars_type.createCarModel');
             Route::post('deleteCarModel',[App\Http\Controllers\dashboard\admin\settings\CarsTypeController::class , 'deleteCarModel'])->name('dashboard.settings.cars_type.deleteCarModel');
             Route::post('updateCarModel',[App\Http\Controllers\dashboard\admin\settings\CarsTypeController::class , 'updateCarModel'])->name('dashboard.settings.cars_type.updateCarModel');
+        });
+        Route::group(['prefix'=>'cars_type'],function (){
+            Route::get('index',[App\Http\Controllers\dashboard\admin\settings\TermsOfUseController::class , 'index'])->name('dashboard.settings.terms_of_use.index');
+            Route::post('update',[App\Http\Controllers\dashboard\admin\settings\TermsOfUseController::class , 'update'])->name('dashboard.settings.terms_of_use.update');
         });
     });
 });
