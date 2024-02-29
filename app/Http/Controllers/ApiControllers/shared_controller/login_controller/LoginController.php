@@ -12,11 +12,10 @@ class LoginController extends Controller
     public function userLogin(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
+            'user_phone1' => 'required',
             'password' => 'required'
         ], [
-            'email.required' => 'الرجاء إرسال البريد الإلكتروني',
-            'email.email' => 'صيغة البريد الإلكتروني غير صحيحة',
+            'user_phone1.required' => 'الرجاء إرسال رقم الهاتف',
             'password.required' => 'الرجاء إرسال كلمة المرور',
         ]);
 
