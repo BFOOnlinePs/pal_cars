@@ -44,26 +44,39 @@
                             class="fas fa-bars"></i></a>
                 </li> --}}
                 <li class="nav-item">
-                    <a href="{{ route('home') }}" class="nav-link">الرئيسية</a>
+                    <a href="{{ route('web_app_home') }}" class="nav-link">الرئيسية</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('home') }}" class="nav-link">القطع المطلوبة</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('home') }}" class="nav-link">معرض القطع</a>
+                    <a href="{{ route('web_pages.part_expo.index') }}" class="nav-link">معرض القطع</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('home') }}" class="nav-link">معرض السيارات</a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('home') }}" class="nav-link">تخمين سيارة</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('home') }}" class="nav-link">دفتر السيارة</a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('home') }}" class="nav-link">الحوادث</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('home') }}" class="nav-link">من نحن</a>
+                    <a href="{{ route('web_pages.about_us') }}" class="nav-link">من نحن</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('home') }}" class="nav-link">اتصل بنا</a>
+                    <a href="{{ route('web_pages.contact_us') }}" class="nav-link">اتصل بنا</a>
                 </li>
+                @if (auth()->check() && auth()->user()->user_role == '["1"]')
+                <li class="nav-item">
+                    {{-- <a class="btn btn-sm btn-warning mt-2" href="{{route("dashboard.index")}}">لوحة التحكم</a> --}}
+                    {{-- <a class="bg-warning nav-link rounded" href="{{route("dashboard.index")}}">لوحة التحكم</a> --}}
+                    <a class="bg-warning nav-link rounded" style="cursor: pointer" onclick="toggleNavbar()">لوحة التحكم</a>
+                </li>
+                @endif
             </ul>
         </div>
 
@@ -72,9 +85,11 @@
         {{-- auth()->user()->u_role_id == 5 --}}
         @if (auth()->check())
 
-        @if(auth()->user()->user_role == '["1"]')
+        {{-- @if(auth()->user()->user_role == '["1"]')
         <a class="btn btn-sm btn-warning" href="{{route("dashboard.index")}}">لوحة التحكم</a>
-        @endif
+        @endif --}}
+
+        <span style="font-size: 15px">أهلاً بك <span class="text-info">{{auth()->user()->name}}</span></span>
 
         <a class="text-danger" style="font-size: 12px" href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">( تسجيل الخروج )</a>
 

@@ -7,6 +7,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Cities;
+use App\Models\SystemSettingsModel;
 
 trait RegistersUsers
 {
@@ -20,7 +21,19 @@ trait RegistersUsers
     public function showRegistrationForm()
     {
         $data = Cities::get();
-        return view('auth.register',['data'=>$data]);
+        $terms_of_use = SystemSettingsModel::first()->terms_of_use;
+
+        // Split the text into an array using <br> as the delimiter
+        $termsArray = explode('<br>', $terms_of_use);
+
+        // Remove empty elements from the array
+        $termsArray = array_filter($termsArray);
+
+        // $terms_of_use = explode(PHP_EOL, $terms_of_use);
+        // $terms_of_use = explode('،', $terms_of_use);
+
+        // return view('auth.register',['data'=>$data,'terms'=>$terms_of_use]);
+        return view('auth.register',['data'=>$data,'terms'=>$termsArray]);
     }
 
     /**

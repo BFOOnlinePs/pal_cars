@@ -9,4 +9,11 @@ class CarModels extends Model
 {
     use HasFactory;
     protected $table = 'car_models';
+
+    public function model_parts()
+    {
+        return $this->hasMany(PartAcceptModelsModel::class,'id','part_model_id');
+    }
+
+
 }

@@ -16,7 +16,15 @@ class TermsOfUseController extends Controller
 
     public function update(Request $request){
         $data = SystemSettingsModel::first();
-        $data->terms_of_use = $request->terms_of_use;
+
+        ///these for store it without html tags and with <br>
+        $contentWithoutListItems = preg_replace('/<li[^>]*>(.*?)<\/li>/', '$1<br>', $request->terms_of_use);
+        $contentWithBr = str_replace("\n", "<br>", $contentWithoutListItems);
+        $contentWithoutTags = strip_tags($contentWithBr, '<br>');
+        /////////////////////////////
+
+        $data->terms_of_use = $contentWithoutTags;
+
         if ($data->save()){
             return response()->json([
                 'success'=>'true',

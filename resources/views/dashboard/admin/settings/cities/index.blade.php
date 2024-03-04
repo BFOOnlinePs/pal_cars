@@ -125,7 +125,7 @@ document.getElementById("cityForm").addEventListener("submit", (e) => {
 
 function editCity(city){
     document.getElementById('edit_city_name').value = city.city_name;
-    document.getElementById('edit_city_id').value = city.city_id;
+    document.getElementById('edit_city_id').value = city.id;
     $('#edit_city_modal').modal('show');
 }
 

@@ -38,7 +38,7 @@ class CitiesController extends Controller
     }
 
     public function update(Request $request){
-        $data = Cities::where('city_id',$request->edit_city_id)->first();
+        $data = Cities::where('id',$request->edit_city_id)->first();
         $data->city_name = $request->edit_city_name;
         if($data->save()){
             $data = Cities::get();

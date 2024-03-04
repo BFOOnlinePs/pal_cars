@@ -29,6 +29,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-ui/jquery-ui.css') }}">
     @yield('style')
+    <link rel="stylesheet" href="{{ asset('assets/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+
     <link rel="stylesheet" href="{{ asset('assets/plugins/toastr/toastr.min.css') }}">
     <style>
         * {
@@ -48,6 +51,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="wrapper">
         <!-- Navbar -->
         @include('layouts.navbar')
+
+        {{-- <button >Toggle Navbar</button> --}}
+
+        @if(auth()->check() && auth()->user()->user_role == '["1"]')
+        <div id="navbarContainer">
+            @include('dashboard.layouts.navbar')
+        </div>
+        @endif
+
+
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
@@ -93,10 +106,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <script src="{{ asset('assets/plugins/jquery-ui/jquery-ui.js') }}"></script>
 
+    {{-- ////////////////////////////////////////////////////////////////////////////////////// --}}
+
+    <script src="{{ asset('assets/plugins/select2/js/select2.full.min.js') }}"></script>
+
     <script>
         $(function() {
             $('[data-toggle="tooltip"]').tooltip()
+
+            $('.select2').select2({
+                theme: 'bootstrap4'
+            });
+
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            });
+
+            // $('#reservation').daterangepicker();
         })
+
+        function toggleNavbar() {
+            $('#navbarContainer').toggle();
+        }
 
         // $(function() {
         //     // Select all input elements with type="date" and apply Datepicker
@@ -108,6 +139,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     @yield('script')
     <script src="{{ asset('assets/plugins/toastr/toastr.min.js') }}"></script>
+
 
     <script>
         function viewAttachment(url) {

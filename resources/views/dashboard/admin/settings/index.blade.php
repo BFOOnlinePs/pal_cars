@@ -44,6 +44,21 @@
         </div>
     </div>
 
+    <div class="col-lg-3 col-6">
+
+        <div class="small-box bg-danger">
+            <div class="inner">
+                <h3>شروط الاستخدام</h3>
+                <p>شروط الاستخدام</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-exclamation"></i>
+            </div>
+            <a href="{{ route('dashboard.settings.terms_of_use.index') }}" class="small-box-footer">المزيد <i
+                    class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+
     <!-- ./col -->
     {{-- <div class="col-lg-3 col-6">
       <!-- small box -->

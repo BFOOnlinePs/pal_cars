@@ -25,47 +25,51 @@
     </div>
 </nav> --}}
 
-<nav class="main-header navbar navbar-expand-md navbar-light">
+<nav class="main-header navbar navbar-expand-md navbar-dark">
     <div class="container">
         {{-- <a href="../../index3.html" class="navbar-brand">
             <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                 style="opacity: .8">
             <span class="brand-text font-weight-light">AdminLTE 3</span>
         </a> --}}
-        <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse2"
+            aria-controls="navbarCollapse2" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+        <div class="collapse navbar-collapse order-3" id="navbarCollapse2">
 
             <ul class="navbar-nav">
                 {{-- <li class="nav-item">
                     <a class="nav-link text-white text-white" data-widget="pushmenu" href="#" role="button"><i
                             class="fas fa-bars"></i></a>
                 </li> --}}
-                <li class="nav-item">
-                    <a href="{{ route('home') }}" class="nav-link text-white">الرئيسية</a>
-                </li>
+
+                {{-- <li class="nav-item">
+                    <a href="{{ route('home') }}" class="nav-link">الرئيسية</a>
+                </li> --}}
+
                 <li class="nav-item dropdown">
                     {{-- <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false" class="nav-link text-white dropdown-toggle">الحسابات</a> --}}
                     <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false" class="nav-link dropdown-toggle">الحسابات</a>
                         <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                            <li><a href="#" class="dropdown-item">شجرة الحسابات</a></li>
+                            {{-- <li><a href="#" class="dropdown-item">شجرة الحسابات</a></li> --}}
                             <li><a href="{{route('dashboard.users.index')}}" class="dropdown-item">المستخدمين</a></li>
-                            <li><a href="" class="dropdown-item">الموردين</a></li>
-                            <li><a href="" class="dropdown-item">الزبائن</a></li>
-                            <li><a href="#" class="dropdown-item">النقدية</a></li>
-                            <li><a href="#" class="dropdown-item">البنوك</a></li>
+                            {{-- <li><a href="" class="dropdown-item">الموردين</a></li> --}}
+                            {{-- <li><a href="" class="dropdown-item">الزبائن</a></li> --}}
+                            {{-- <li><a href="#" class="dropdown-item">النقدية</a></li> --}}
+                            {{-- <li><a href="#" class="dropdown-item">البنوك</a></li> --}}
                         </ul>
                 </li>
-                <li class="nav-item dropdown">
+
+                {{-- <li class="nav-item dropdown">
                     <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false" class="nav-link dropdown-toggle">مبيعات</a>
                     <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
                     </ul>
                 </li>
+
                 <li class="nav-item dropdown">
                     <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false" class="nav-link dropdown-toggle">مشتريات</a>
@@ -101,7 +105,7 @@
                        aria-expanded="false" class="nav-link dropdown-toggle">التقارير</a>
                     <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
                     </ul>
-                </li>
+                </li> --}}
                 <li class="nav-item dropdown">
                     <a id="dropdownSubMenu1" href="{{route('dashboard.settings.index')}}" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false" class="nav-link dropdown-toggle">الإعدادات</a>
@@ -109,7 +113,7 @@
                         {{-- <a href="{{route('dashboard.settings.cities.index')}}">test</a> --}}
                         <li><a href="{{route('dashboard.settings.cities.index')}}" class="dropdown-item">المدن</a></li>
                         <li><a href="{{route('dashboard.settings.cars_type.index')}}" class="dropdown-item">أنواع السيارات</a></li>
-                        <li><a href="{{route('dashboard.settings.cars_type.index')}}" class="dropdown-item">شروط الاستخدام</a></li>
+                        <li><a href="{{route('dashboard.settings.terms_of_use.index')}}" class="dropdown-item">شروط الاستخدام</a></li>
                     </ul>
                 </li>
             </ul>
@@ -223,7 +227,7 @@
             </li> --}}
         {{-- </ul> --}}
     </div>
-    <div class="mt-1">
+    {{-- <div class="mt-1">
 
         <a class="btn btn-sm btn-success" href="{{route("home")}}">الموقع</a>
 
@@ -233,5 +237,5 @@
             {{ csrf_field() }}
         </form>
 
-    </div>
+    </div> --}}
 </nav>
