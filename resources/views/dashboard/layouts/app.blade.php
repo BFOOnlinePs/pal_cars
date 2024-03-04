@@ -50,8 +50,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <body class="layout-top-nav" style="height: auto;" data-new-gr-c-s-check-loaded="14.1147.0" data-gr-ext-installed
     cz-shortcut-listen="true">
     <div class="wrapper">
+
+        @include('layouts.navbar')
         <!-- Navbar -->
-        @include('dashboard.layouts.navbar')
+        @if(auth()->check() && auth()->user()->user_role == '["1"]')
+        <div id="navbarContainer">
+            @include('dashboard.layouts.navbar')
+        </div>
+        @endif
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
@@ -115,6 +121,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="{{ asset('assets/plugins/select2/js/select2.full.min.js') }}"></script>
 
     <script>
+
+        function toggleNavbar() {
+            $('#navbarContainer').toggle();
+        }
+
         function viewAttachment(url) {
             document.getElementById('view_attachment_result').src = url;
         }

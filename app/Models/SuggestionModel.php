@@ -5,12 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cities extends Model
+class SuggestionModel extends Model
 {
     use HasFactory;
-    protected $table = 'cities';
+    protected $table = 'suggestions';
 
-    protected $fillable = [
-        'city_id'
-    ];
 }

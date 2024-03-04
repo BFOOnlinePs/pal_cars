@@ -53,6 +53,7 @@
                         <tr>
                           <th>موديل السيارة</th>
                           <th>استعراض صورة الموديل</th>
+                          <th>حالة الموديل</th>
                           <th>العمليات</th>
                         </tr>
                       </thead>
@@ -66,7 +67,20 @@
                           <tr>
                               <td>{{$key->car_model}}</td>
                               <td>
-                                <img src="{{ asset('storage/uploads/carModelsPics/' . $key->car_model_pic) }}" style="cursor: pointer;" width="50px"  alt="" onclick="openPic({{$key}})">
+                                @if ($key->car_model_pic && file_exists(public_path('storage/uploads/carModelsPics/' . $key->car_model_pic)))
+                                    <img src="{{ asset('storage/uploads/carModelsPics/' . $key->car_model_pic) }}" style="cursor: pointer;" width="50px"  alt="" onclick="openPic({{$key}})">
+                                @else
+                                    <img src="{{ asset('storage/uploads/systemPics/noImage.png') }}" width="50px" alt="Photo">
+                                @endif
+
+                              </td>
+                              <td>
+                                <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                                    {{-- <input onchange="change_status({{$key->id}},(this.checked) ?1:0)" @if($key->status == 1) checked @endif type="checkbox" class="custom-control-input" id="customSwitch3"> --}}
+                                    <input onchange="change_status({{$key->id}},(this.checked) ?1:0)" @if($key->status == 1) checked @endif type="checkbox" class="custom-control-input" id="customSwitch{{$key->id}}">
+
+                                    <label class="custom-control-label" for="customSwitch{{$key->id}}"></label>
+                                </div>
                               </td>
                               <td>
                                 {{-- <div class="btn-group btn-group-sm">
@@ -130,6 +144,40 @@
     //         });
     //     // });
     // }, false);
+
+    function change_status(id,value){
+        // console.log("hi")
+        // console.log(id)
+        // console.log(value)
+        // id =
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': csrfToken
+            }
+        });
+
+        $.ajax({
+            url: "{{ route('dashboard.settings.cars_type.change_status') }}",
+            type: 'POST',
+            data: {'id':id,'status':value},
+            // contentType: false,
+            // processData: false,
+            success: function (response) {
+                if(response.success == 'true'){
+                    toastr.success(response.message)
+                }
+                else{
+                    toastr.error(response.message)
+                }
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+
+    }
 
 
     function openPic(data){
