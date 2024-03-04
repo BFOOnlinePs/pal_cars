@@ -13,22 +13,17 @@ class SignupController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|email|unique:users,email',
             'password' => 'required', // confirmed in front end
-            'phone1' => 'required',
-            'phone2' => 'required',
+            'phone1' => 'required|unique:users,user_phone1',
             'city_id' => 'required',
             'address' => 'required',
             'role_id' => 'required|exists:user_role,id',
 
         ], [
             'name.required' => 'الرجاء إرسال الإسم',
-            'email.required' => 'الرجاء إرسال البريد الإلكتروني',
-            'email.email' => 'صيغة البريد الإلكتروني غير صحيحة',
-            'email.unique' => 'البريد الإلكتروني موجود بالفعل',
             'password.required' => 'الرجاء إرسال كلمة المرور',
-            'phone1.required' => 'الرجاء إرسال رقم الهاتف',
-            'phone2.required' => 'الرجاء إرسال رقم الهاتف 2',
+            'phone1.unique' => 'رقم المحمول موجود بالفعل',
+            'phone1.required' => 'الرجاء إرسال رقم المحمول',
             'city_id.required' => 'الرجاء إرسال المدينة',
             'city_id.exists' => 'رقم المدينة غير موجود',
             'address.required' => 'الرجاء إرسال العنوان',
@@ -43,16 +38,17 @@ class SignupController extends Controller
             ], 422);
         }
 
+        $role_id = $request->input('role_id');
 
         $user = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
-            'password' => $request->input('password'), // encrypt
+            'password' => bcrypt($request->input('password')),
             'user_phone1' => $request->input('phone1'),
             'user_phone2' => $request->input('phone2'),
             'user_city' => $request->input('city_id'),
             'user_address' => $request->input('address'),
-            'user_role' => $request->input('role_id'),
+            'user_role' =>  "[\"$role_id\"]",
             'user_status' => 1, // active
         ]);
 
@@ -65,10 +61,10 @@ class SignupController extends Controller
         // $user->update(['remember_token' => $token]);
 
         return response([
-            'message' => 'user created',
+            'status' => true,
+            'message' => 'تم إنشاء الحساب بنجاح',
             'user' => $user,
             'token' => $token,
         ], 200);
-
     }
 }
