@@ -4,7 +4,6 @@ namespace App\Http\Controllers\ApiControllers\shared_controller\shared_controlle
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class UserDataController extends Controller
 {

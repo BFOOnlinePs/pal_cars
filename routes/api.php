@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ApiControllers\shared_controller\cars_parts_controller\CarsPartsExpoController;
 use App\Http\Controllers\ApiControllers\shared_controller\login_controller\LoginController;
 use App\Http\Controllers\ApiControllers\shared_controller\logout_controller\LogoutController;
+use App\Http\Controllers\ApiControllers\shared_controller\shared_controller\CarsTypesController;
 use App\Http\Controllers\ApiControllers\shared_controller\shared_controller\CitiesController;
 use App\Http\Controllers\ApiControllers\shared_controller\shared_controller\SystemSettingsController;
 use App\Http\Controllers\ApiControllers\shared_controller\shared_controller\UserDataController;
@@ -30,6 +32,11 @@ Route::get('terms-of-use', [SystemSettingsController::class, 'getTermsOfUse']); 
 // });
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::get('logout', [LogoutController::class, 'userLogout']); // for all users
-    Route::get('users/{id}', [UserDataController::class, 'getUserInfo']); // for all users
+    // for all users
+    Route::get('logout', [LogoutController::class, 'userLogout']);
+    Route::get('users/{id}', [UserDataController::class, 'getUserInfo']);
+    Route::get('cars-parts', [CarsPartsExpoController::class, 'getCarsPartsExpo']);
+    Route::get('cars-parts/{id}', [CarsPartsExpoController::class, 'getCarPartDetails']);
+    Route::get('cars-types', [CarsTypesController::class, 'getCarsTypes']);
+
 });
