@@ -17,5 +17,11 @@ class CarsType extends Model
         return $this->hasMany(PartExpoModel::class,'id','part_car_type');
     }
 
+    public function car_adv()
+    {
+        return $this->hasMany(CarsAdsModel::class,'id','car_type');
+    }
+
+
 
 }

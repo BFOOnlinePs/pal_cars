@@ -53,7 +53,7 @@
                     <a href="{{ route('web_pages.part_expo.index') }}" class="nav-link">معرض القطع</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('home') }}" class="nav-link">معرض السيارات</a>
+                    <a href="{{ route('web_pages.cars_ads.index') }}" class="nav-link">معرض السيارات</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('home') }}" class="nav-link">تخمين سيارة</a>

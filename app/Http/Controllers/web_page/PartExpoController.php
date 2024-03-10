@@ -57,7 +57,7 @@ class PartExpoController extends Controller
 
     public function search(Request $request){
         $query = PartExpoModel::query();
-        $check = false;
+        // $check = false;
         $part_status_array = json_decode($request->part_status_array, true);
         if ($request->car_type != 0) {
             $query->where('part_car_type', $request->car_type);

@@ -485,27 +485,27 @@
             });
     }
 
-    function uploadImages() {
-        var formData = new FormData($('#imageForm')[0]);
+    // function uploadImages() {
+    //     var formData = new FormData($('#imageForm')[0]);
 
-        $.ajax({
-            url: 'your_upload_endpoint.php', // Replace with your server-side upload endpoint
-            type: 'POST',
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function(response) {
-                // Handle success, e.g., display a success message
-                alert('Images uploaded successfully!');
-                // Clear the file input
-                $('#imageInput').val('');
-            },
-            error: function(error) {
-                // Handle errors, e.g., display an error message
-                console.error('Error uploading images:', error);
-            }
-        });
-    }
+    //     $.ajax({
+    //         url: 'your_upload_endpoint.php', // Replace with your server-side upload endpoint
+    //         type: 'POST',
+    //         data: formData,
+    //         contentType: false,
+    //         processData: false,
+    //         success: function(response) {
+    //             // Handle success, e.g., display a success message
+    //             alert('Images uploaded successfully!');
+    //             // Clear the file input
+    //             $('#imageInput').val('');
+    //         },
+    //         error: function(error) {
+    //             // Handle errors, e.g., display an error message
+    //             console.error('Error uploading images:', error);
+    //         }
+    //     });
+    // }
 
     $('#imageInput').on('change', function() {
         var files = $(this)[0].files;

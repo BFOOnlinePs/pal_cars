@@ -21,7 +21,8 @@
 
         <div class="row">
             {{-- <div class="col-2 d-flex align-items-center"> --}}
-                <a class="btn btn-warning mb-2 mr-3" href="{{route('web_pages.part_expo.add')}}"><i class="fa fa-plus"></i> الإعلان عن قطع متوفرة</a>
+                {{-- <a class="btn btn-warning mb-2 mr-3" href="{{route('web_pages.part_expo.add')}}"><i class="fa fa-plus"></i> الإعلان عن قطع متوفرة</a> --}}
+                <a class="btn btn-warning mb-2 mr-3" href="{{ auth()->check() ? route('web_pages.part_expo.add') : route('login') }}"><i class="fa fa-plus"></i> الإعلان عن قطع متوفرة</a>
             {{-- </div> --}}
         </div>
 
@@ -41,7 +42,7 @@
                         <div class="form-group">
                             {{-- <label>Date range:</label> --}}
                             <label for="startDate">من تاريخ</label>
-                            <input id="startDate" class="form-control" name="from_date" type="date" />
+                            <input id="from_date" class="form-control" name="from_date" type="date" />
                         </div>
                         </div>
 
@@ -49,7 +50,7 @@
                             <div class="form-group">
                                 {{-- <label>Date range:</label> --}}
                                 <label for="startDate">إلى تاريخ</label>
-                                <input id="startDate" class="form-control" name="to_date" type="date" />
+                                <input id="to_date" class="form-control" name="to_date" type="date" />
                             </div>
                             </div>
 

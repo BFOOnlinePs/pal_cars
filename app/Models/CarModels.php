@@ -14,6 +14,10 @@ class CarModels extends Model
     {
         return $this->hasMany(PartAcceptModelsModel::class,'id','part_model_id');
     }
+    public function adv()
+    {
+        return $this->hasMany(CarsAdsModel::class,'id','car_model');
+    }
 
 
 }
