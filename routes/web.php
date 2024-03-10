@@ -441,4 +441,14 @@ Route::group(['prefix'=>'web_pages'],function (){
         Route::post('/add_part', [App\Http\Controllers\web_page\PartExpoController::class, 'add_part'])->name('web_pages.part_expo.add_part');
         Route::post('/add_temp_car_model', [App\Http\Controllers\web_page\PartExpoController::class, 'add_temp_car_model'])->name('web_pages.part_expo.add_temp_car_model');
     });
+    Route::group(['prefix' => 'cars_ads'], function () {
+        Route::get('/index', [App\Http\Controllers\web_page\CarsAdsController::class, 'index'])->name('web_pages.cars_ads.index');
+        Route::get('/choose_car_type', [App\Http\Controllers\web_page\CarsAdsController::class, 'choose_car_type'])->name('web_pages.cars_ads.choose_car_type');
+        Route::get('/add/{id}/{user_id}', [App\Http\Controllers\web_page\CarsAdsController::class, 'add'])->name('web_pages.cars_ads.add');
+        Route::post('/create', [App\Http\Controllers\web_page\CarsAdsController::class, 'create'])->name('web_pages.cars_ads.create');
+        Route::get('/details/{id}', [App\Http\Controllers\web_page\CarsAdsController::class, 'details'])->name('web_pages.cars_ads.details');
+        Route::get('/create_message', [App\Http\Controllers\web_page\CarsAdsController::class, 'create_message'])->name('web_pages.cars_ads.create_message');
+        Route::post('/search', [App\Http\Controllers\web_page\CarsAdsController::class, 'search'])->name('web_pages.cars_ads.search');
+        Route::post('/advanced_search', [App\Http\Controllers\web_page\CarsAdsController::class, 'advanced_search'])->name('web_pages.cars_ads.advanced_search');
+    });
 });

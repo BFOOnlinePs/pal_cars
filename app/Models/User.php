@@ -60,4 +60,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(PartExpoModel::class,'id','insert_by');
     }
+
+    public function city()
+    {
+        return $this->belongsTo(Cities::class, 'user_city', 'id');
+    }
 }
