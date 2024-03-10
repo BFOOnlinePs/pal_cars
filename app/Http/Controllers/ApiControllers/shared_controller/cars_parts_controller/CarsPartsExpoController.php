@@ -8,6 +8,8 @@ use App\Models\PartExpoImagesModel;
 use App\Models\PartExpoModel;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class CarsPartsExpoController extends Controller
 {
@@ -45,7 +47,7 @@ class CarsPartsExpoController extends Controller
 
         $cars_parts_expo = $cars_parts_expo->with('carType:id,car_type,logo')
             ->orderBy('insert_date', 'desc')
-            ->paginate(7);
+            ->paginate(10);
 
         // pagination object
         return response()->json([
@@ -85,5 +87,87 @@ class CarsPartsExpoController extends Controller
             'status' => true,
             'car_part' => $car_part,
         ]);
+    }
+
+    // by current user
+    public function addNewCarPartToExpo(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'part_name' => 'required',
+            'part_status' => 'required|in:مستخدم,مجدد,جديد,تقليد',
+            'part_price' => 'required',
+            'part_details' => 'required',
+            'part_main_pic' => 'nullable|image', // file|mimes:jpg,jpeg,png,svg
+            'part_pics.*' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048', // array + file|mimes:jpg,jpeg,png,svg
+            //image|mimes:jpeg,png,jpg,gif|max:2048
+            'car_type' => 'required|exists:cars_type,id',
+            // car model (array)
+            // years (array) for each car model
+        ], [
+            'part_name.required' => 'الرجاء إرسال إسم القطعة',
+            'part_status.required' => 'الرجاء تحديد حالة القطعة',
+            'part_status.in' => 'حالة القطعة غير صحيحة',
+            'part_price.required' => 'الرجاء كتابة سعر القطعة',
+            'part_details.required' => 'الرجاء كتابة تفاصيل القطعة',
+            // 'part_main_pic' => 'nullable',
+            'part_pics.image' => 'يجب ان تكون صورة',
+            'part_pics.mimes' => 'الصيغة',
+            // 'part_pics.file' => 'يجب ان تكون ملف',
+            'car_type.required' => 'الرجاء تحديد نوع السيارة',
+            'car_type.exists' => 'نوع السيارة غير موجود',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => $validator->errors()->first()
+            ], 422);
+        }
+
+        $part_expo = new PartExpoModel();
+        $part_expo->part_name = $request->input('part_name');
+        $part_expo->part_car_type = $request->input('car_type');
+        $part_expo->part_detail = $request->input('part_details');
+        $part_expo->part_status = $request->input('part_status');
+        $part_expo->part_price = $request->input('part_price');
+        $part_expo->insert_by = Auth()->user()->id;
+
+        if ($request->hasFile('part_main_pic')) {
+            $file = $request->file('part_main_pic');
+            // return $file;
+            $folderPath = 'uploads/partExpoPics';
+            // $fileName = time() . '_' . uniqid() . '.' . $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
+            $fileName = time() . '_' . uniqid() . '.' . $extension;
+            $request->file('part_main_pic')->storeAs($folderPath, $fileName, 'public');
+
+            $part_expo->part_main_pic = $fileName;
+        }
+
+        if ($part_expo->save()) {
+            // for part expo pictures
+            if ($request->hasFile('part_pics')) {
+                $images = $request->file('part_pics');
+                foreach ($request->part_pics as $image) {
+                    $part_expo_images = new PartExpoImagesModel();
+                    $folderPath = 'uploads/partExpoPics';
+                    // $fileName = time() . '_' . uniqid() . '.' . $file->getClientOriginalName();
+                    $extension = $image->getClientOriginalExtension();
+                    $fileName = time() . '_' . uniqid() . '.' . $extension;
+                    $image->storeAs($folderPath, $fileName, 'public');
+
+                    $part_expo_images->image_path = $fileName;
+                    $part_expo_images->part_id = $part_expo->id;
+
+                    $part_expo_images->save();
+                }
+            }
+
+
+            // for car model
+
+        }
+
+        return $part_expo;
     }
 }

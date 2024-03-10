@@ -37,6 +37,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('users/{id}', [UserDataController::class, 'getUserInfo']);
     Route::get('cars-parts', [CarsPartsExpoController::class, 'getCarsPartsExpo']);
     Route::get('cars-parts/{id}', [CarsPartsExpoController::class, 'getCarPartDetails']);
+    Route::post('cars-parts', [CarsPartsExpoController::class, 'addNewCarPartToExpo']);
     Route::get('cars-types', [CarsTypesController::class, 'getCarsTypes']);
-
 });
