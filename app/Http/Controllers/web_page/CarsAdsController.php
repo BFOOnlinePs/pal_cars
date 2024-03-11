@@ -10,6 +10,7 @@ use App\Models\CarsType;
 use App\Models\Cities;
 use App\Models\ColorsModel;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use SebastianBergmann\CodeCoverage\Report\Html\Colors;
 
@@ -42,10 +43,34 @@ class CarsAdsController extends Controller
     //
     public function index(){
         //here make filter in the index page
-        $cars_ads = CarsAdsModel::with('model')->get();
+        $cars_ads = CarsAdsModel::orderBy('created_at', 'desc')->where('ads_status','!=',0)->with('model','carType')->get();
         $cars = CarsType::get();
         $cities = Cities::get();
         $colors = ColorsModel::get();
+        // $model =
+
+        foreach ($cars_ads as $car_ad) {
+            $city_ids = json_decode($car_ad->cities); // Assuming 'cities' is the column name
+
+            // $city_names = "";
+            $city_names = [];
+
+            foreach ($city_ids as $city_id) {
+                $city = $cities->where('id', $city_id)->first();
+
+                if ($city) {
+                    // $city_names = $city_names.$city->city_name." | ";
+                    $city_names[] = $city->city_name;
+                }
+            }
+
+            $city_names_string = implode(" | ", $city_names);
+            // Assign the city names to the car ad
+            $car_ad->city_names = $city_names_string;
+        }
+
+        // return $cars_ads;
+
         return view('web_pages.cars_ads.index',['cars_ads'=>$cars_ads,'years'=>$this->years,'cars'=>$cars
         ,'cities'=>$cities,'colors'=>$colors,'seats'=>$this->seatsArray]);
     }
@@ -183,6 +208,7 @@ class CarsAdsController extends Controller
     public function details($id){
         $data = CarsAdsModel::with('visitorCity','model')->where('id',$id)->first();
         $images = CarsAdsImagesModel::where('car_ads_id',$id)->get();
+        // return $images;
         return view('web_pages.cars_ads.details',['data'=>$data,'images'=>$images]);
     }
 

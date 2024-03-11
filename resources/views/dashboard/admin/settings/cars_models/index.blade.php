@@ -76,17 +76,12 @@
                               </td>
                               <td>
                                 <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                                    {{-- <input onchange="change_status({{$key->id}},(this.checked) ?1:0)" @if($key->status == 1) checked @endif type="checkbox" class="custom-control-input" id="customSwitch3"> --}}
                                     <input onchange="change_status({{$key->id}},(this.checked) ?1:0)" @if($key->status == 1) checked @endif type="checkbox" class="custom-control-input" id="customSwitch{{$key->id}}">
 
                                     <label class="custom-control-label" for="customSwitch{{$key->id}}"></label>
                                 </div>
                               </td>
                               <td>
-                                {{-- <div class="btn-group btn-group-sm">
-                                    <a href="#" class="btn btn-info"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                                </div> --}}
                                 <button class="btn btn-secondary" onclick="editCarModel({{$key}})"><i class="fas fa-edit"></i></button>
                                 <button class="btn btn-danger" onclick="deleteCarModel({{$key}})"><i class="fas fa-trash"></i></button>
                               </td>
@@ -118,38 +113,9 @@
   <!-- AdminLTE App -->
   <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
 <script>
-    // window.addEventListener('load',
-    // function() {
-
-
-    //     // $(document).ready(function(){
-    //         var csrfToken = $('meta[name="csrf-token"]').attr('content');
-
-    //         // Send an AJAX request with the CSRF token
-    //         $.ajaxSetup({
-    //             headers: {
-    //                 'X-CSRF-TOKEN': csrfToken
-    //             }
-    //         })
-    //         $.ajax({
-    //             type: 'POST',
-    //             url: "{{ route('dashboard.settings.cities.get') }}",
-    //             dataType: 'json',
-    //             success: function(response) {
-    //                 $('#citiesTable').html(response.view);
-    //             },
-    //             error: function(xhr, status, error) {
-    //                 console.error("error"+error);
-    //             }
-    //         });
-    //     // });
-    // }, false);
 
     function change_status(id,value){
-        // console.log("hi")
-        // console.log(id)
-        // console.log(value)
-        // id =
+
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
         $.ajaxSetup({
@@ -222,7 +188,8 @@
                 contentType: false,
                 processData: false,
                 success: function (response) {
-                    //let the table change
+                    var model_form = document.getElementById('carsModelForm');
+                    model_form.reset();
                     $('#carsModelsTable').html(response.view);
                 },
                 error: function (error) {

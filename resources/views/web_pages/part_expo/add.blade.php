@@ -517,6 +517,7 @@
         for (var i = 0; i < files.length; i++) {
             var file = files[i];
             var reader = new FileReader();
+            selectedFiles.push(file);
 
             // reader.onloadstart = function () {
             //     document.getElementById('loaderContainer').hidden = false;
@@ -528,7 +529,7 @@
                 var previewItem = '<div class="col-2 mb-2"><img src="' + imageSrc + '" class="img-thumbnail" style="width:100%; height:100%" alt="Preview"><span class="delete-btn" onclick="deleteImage(this)">x</span></div>';
                 previewContainer.append(previewItem);
 
-                selectedFiles.push(file);
+
             };
 
             reader.readAsDataURL(file);

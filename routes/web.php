@@ -451,4 +451,7 @@ Route::group(['prefix'=>'web_pages'],function (){
         Route::post('/search', [App\Http\Controllers\web_page\CarsAdsController::class, 'search'])->name('web_pages.cars_ads.search');
         Route::post('/advanced_search', [App\Http\Controllers\web_page\CarsAdsController::class, 'advanced_search'])->name('web_pages.cars_ads.advanced_search');
     });
+    // Route::group(['prefix' => 'accidents'], function () {
+    //     Route::get('/index', [App\Http\Controllers\web_page\CarsAdsController::class, 'index'])->name('web_pages.cars_ads.index');
+    // });
 });

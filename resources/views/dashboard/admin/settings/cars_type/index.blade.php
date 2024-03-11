@@ -51,7 +51,7 @@
     <div class="col-md-8">
         <div class="card">
             <div class="card-body p-0">
-              <table class="table table-striped table-sm" id="carsTypeTable">
+              <table class="table table-striped" id="carsTypeTable">
                     <thead>
                         <tr>
                           <th>نوع السيارة</th>
@@ -69,8 +69,6 @@
                           @foreach ($data as $key)
                           <tr>
                               <td>{{$key->car_type}}</td>
-                              {{-- <td><img src="{{ asset($key->logo) }}" width="50px" height="50px" alt=""></td> --}}
-                              {{-- <td><img src="{{ asset($key->logo) }}" width="50px" alt=""></td> --}}
                               <td><img src="{{ asset('storage/uploads/carTypeLogo/' . $key->logo) }}" width="50px" alt=""></td>
                               <td>
                                 <button class="btn btn-secondary btn-sm" onclick="editCarType({{$key}})"><i class="fas fa-edit"></i></button>
@@ -104,71 +102,6 @@
   <!-- AdminLTE App -->
   <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
 <script>
-    // window.addEventListener('load',
-    // function() {
-
-
-    //     // $(document).ready(function(){
-    //         var csrfToken = $('meta[name="csrf-token"]').attr('content');
-
-    //         // Send an AJAX request with the CSRF token
-    //         $.ajaxSetup({
-    //             headers: {
-    //                 'X-CSRF-TOKEN': csrfToken
-    //             }
-    //         })
-    //         $.ajax({
-    //             type: 'POST',
-    //             url: "{{ route('dashboard.settings.cities.get') }}",
-    //             dataType: 'json',
-    //             success: function(response) {
-    //                 $('#citiesTable').html(response.view);
-    //             },
-    //             error: function(xhr, status, error) {
-    //                 console.error("error"+error);
-    //             }
-    //         });
-    //     // });
-    // }, false);
-
-
-    // document.getElementById("carsTypeForm").addEventListener("submit", (e) => {
-    //        e.preventDefault();
-
-    //     //    if(document.getElementById("edit_cc_name").value == ""){
-    //     //         $('#edit_cc_name').addClass('input-error');
-    //     //     }else{
-
-    //             data = $('#carsTypeForm').serialize();
-    //             var csrfToken = $('meta[name="csrf-token"]').attr('content');
-
-    //             console.log(document.getElementById('logo').value)
-    //             console.log(data)
-
-    //             // Send an AJAX request with the CSRF token
-    //             $.ajaxSetup({
-    //                 headers: {
-    //                     'X-CSRF-TOKEN': csrfToken
-    //                 }
-    //             });
-
-    //             $.ajax({
-    //                 type: 'POST',
-    //                 url: "{{ route('dashboard.settings.cars_type.create') }}",
-    //                 data: data,
-    //                 dataType: 'json',
-    //                 success: function(response) {
-    //                     console.log(response.status)
-    //                     // $('#citiesTable').html(response.view);
-    //                     // document.getElementById('city').value="";
-    //                 },
-    //                 error: function(xhr, status, error) {
-    //                     console.error("error"+error);
-    //                 }
-    //             });
-    //         // }
-    // });
-
 
     document.getElementById("carsTypeForm").addEventListener("submit", function (e){
 
@@ -198,7 +131,8 @@
                 contentType: false,
                 processData: false,
                 success: function (response) {
-                    //let the table change
+                    var car_type_form = document.getElementById('carsTypeForm');
+                    car_type_form.reset();
                     $('#carsTypeTable').html(response.view);
                 },
                 error: function (error) {

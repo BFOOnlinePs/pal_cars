@@ -13,19 +13,12 @@
 @endsection
 @section('style')
 <style>
-    body {
-    /* font-family: 'Montserrat', sans-serif; */
+    #ads {
+        margin: 30px 0 0px 0;
 
-}
+    }
 
-/* Category Ads */
-
-#ads {
-    margin: 30px 0 0px 0;
-
-}
-
-#ads .card-notify-badge {
+    #ads .card-notify-badge {
         position: absolute;
         left: -10px;
         top: -20px;
@@ -38,7 +31,7 @@
 
     }
 
-#ads .card-notify-year {
+    #ads .card-notify-year {
         position: absolute;
         right: -10px;
         top: -20px;
@@ -50,14 +43,13 @@
         width: 50px;
         height: 50px;
         padding: 15px 0 0 0;
-}
+    }
 
 
-#ads .card-detail-badge {
+    #ads .card-detail-badge {
         background: #343a4085;
         text-align: center;
         border-radius: 30px 30px 30px 30px;
-        /* color: #000; */
         color: white;
         padding: 5px 10px;
         font-size: 14px;
@@ -65,25 +57,24 @@
 
 
 
-#ads .card-ad:hover {
-            background: #fff;
-            box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
+    #ads .card-ad:hover {
+        background: #fff;
+        box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
 
-#ads .card-image-overlay {
+    #ads .card-image-overlay {
         font-size: 20px;
-
     }
 
 
-#ads .card-image-overlay span {
-            display: inline-block;
-        }
+    #ads .card-image-overlay span {
+        display: inline-block;
+    }
 
 
-#ads .ad-btn {
+    #ads .ad-btn {
         text-transform: uppercase;
         width: 150px;
         height: 40px;
@@ -101,19 +92,43 @@
         background-color: white;
     }
 
-#ads .ad-btn:hover {
-            background-color: #ffc1078a;
-            color: #1e1717;
-            border: 2px solid #17a2b87a;
-            background: transparent;
-            transition: all 0.3s ease;
-            box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
-        }
+    #ads .ad-btn:hover {
+        background-color: #ffc1078a;
+        color: #1e1717;
+        border: 2px solid #17a2b87a;
+        background: transparent;
+        transition: all 0.3s ease;
+        box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+    }
 
-#ads .ad-title h5 {
+    #ads .ad-title h5 {
         text-transform: uppercase;
         font-size: 18px;
     }
+
+    .ended{
+        position: absolute;
+        top: 11%;
+        left: 9%;
+        transform: translate(-50%, -50%);
+        background-color: #dc3545;
+        color: #fff !important;
+        padding: 5px 10px;
+    }
+
+    .areas{
+        font-size: 11px;
+        position: absolute;
+        top: 47%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #ffffffcf;
+        padding: 5px 10px;
+        width: 100%;
+        text-align: center;
+        color: black;
+    }
+
 </style>
 @endsection
 @section('content')
@@ -133,7 +148,6 @@
 
                     <div class="col-md-2">
                         <div class="form-group">
-                            {{-- <label>Date range:</label> --}}
                             <label for="from_date">من تاريخ</label>
                             <input id="from_date" class="form-control" name="from_date" type="date" />
                         </div>
@@ -141,7 +155,6 @@
 
                     <div class="col-md-2">
                         <div class="form-group">
-                            {{-- <label>Date range:</label> --}}
                             <label for="to_date">إلى تاريخ</label>
                             <input id="to_date" class="form-control" name="to_date" type="date" />
                         </div>
@@ -151,7 +164,6 @@
                         <div class="form-group">
                             <label for="">نوع السيارة</label>
                             <select name="car_type" id="car_type" class="form-control select2" style="width:100%">
-                                {{-- <option value="0">جميع السيارات</option> --}}
                                 <option value="" selected>--اختيار--</option>
                                 @foreach ($cars as $car)
                                 <option value="{{$car->id}}">{{$car->car_type}}</option>
@@ -186,8 +198,6 @@
 
                     <div class="col-md-2 mt-2 pr-5 pt-4">
                         <div class="form-group">
-                            {{-- <label for=""><a onclick="showAdvancedFilterModal()" style="cursor: pointer">البحث المتقدم <i class="fa fa-filter"></i></a> </label> --}}
-                            {{-- <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#advanced_filter_modal">البحث المتقدم <i class="fa fa-filter"></i></button> --}}
                             <button type="button" class="btn btn-block btn-outline-secondary btn-flat" data-toggle="modal" data-target="#advanced_filter_modal">البحث المتقدم <i class="fa fa-filter"></i></button>
 
                         </div>
@@ -195,7 +205,6 @@
 
                 </div>
                 </div>
-                <!-- /.card-body -->
             </div>
         </form>
     </div>
@@ -205,29 +214,31 @@
     <div class="row" id="ads">
 
 
-    <!-- Category Card -->
     @foreach ($cars_ads as $adv)
 
-
         <div class="col-md-3 mt-3">
-            <div class="card card-ad rounded">
+            <div class="card card-ad rounded" style="width: 335.100px; height:355.700px">
                 <div class="card-image">
                     <span class="card-notify-badge">{{$adv->view_for}}</span>
                     <span class="card-notify-year">{{$adv->car_model_year}}</span>
                     @if ($adv->pic_1 && file_exists(public_path('storage/uploads/carExpoPics/' . $adv->pic_1)))
-                    <img class="img-fluid" src="{{ asset('storage/uploads/carExpoPics/' . $adv->pic_1) }}" alt="Alternate Text" />
+                    <img class="img-fluid" src="{{ asset('storage/uploads/carExpoPics/' . $adv->pic_1) }}" style="width:333.500px !important; height:199.750px !important" alt="Alternate Text" />
                     @else
-                        <img class="img-fluid" src="{{ asset('storage/uploads/systemPics/noImage.png') }}" alt="Photo" />
+                        <img class="img-fluid" src="{{ asset('storage/uploads/systemPics/noImage.png') }}" style="width:333.500px !important; height:199.750px !important" alt="Photo" />
                     @endif
+                    @if ($adv->ads_status==2)
+                        <a class="ended" >مُنتهي</a>
+                    @endif
+                    <a class="areas" >{{$adv->city_names}}</a>
                 </div>
                 <div class="card-image-overlay m-auto">
                     <span class="card-detail-badge">{{$adv->diesel}}</span>
-                    <span class="card-detail-badge">{{$adv->price}}</span>
-                    <span class="card-detail-badge">{{$adv->geer_type}}</span>
+                    <span class="card-detail-badge">{{$adv->price}} ₪</span>
+                    <span class="card-detail-badge">{{$adv->carType->car_type}}</span>
                 </div>
                 <div class="card-body text-center">
                     <div class="ad-title m-auto">
-                        <h5>{{$adv->model->model_name}}</h5>
+                        <h5>{{$adv->model->car_model}}</h5>
                     </div>
                     <a class="ad-btn" href="{{route('web_pages.cars_ads.details', ['id' => $adv->id])}}">استعراض</a>
                 </div>
@@ -249,10 +260,6 @@
 
 @section('script')
 <script>
-
-    // function showAdvancedFilterModal(){
-    //     $('#advanced_filter_modal').show();
-    // }
 
     document.getElementById("advanced_filter_form").addEventListener("submit", (e) => {
         e.preventDefault();
@@ -276,10 +283,7 @@
             data: data,
             dataType: 'json',
             success: function(response) {
-                // $('#advanced_filter_modal').modal('hide');
                 $("#advanced_filter_modal").modal("hide");
-
-                // $('.modal-backdrop').remove();
                 $('#ads').html(response.view);
             },
             error: function(xhr, status, error) {
@@ -292,10 +296,7 @@
     $('#searchForm').find(':input').each(function () {
         $(this).on('change', function () {
 
-            // console.log($('#searchForm').serialize());
-
             var csrfToken = $('meta[name="csrf-token"]').attr('content');
-
 
             $.ajaxSetup({
                 headers: {

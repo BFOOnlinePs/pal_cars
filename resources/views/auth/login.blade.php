@@ -64,6 +64,12 @@
                                 @endif
                             </div>
                         </div>
+
+                        <div class="row mb-0">
+                            <div class="col-md-4 mt-3 offset-md-4 text-center">
+                                <a href="{{route('register')}}">التسجيل في الموقع</a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

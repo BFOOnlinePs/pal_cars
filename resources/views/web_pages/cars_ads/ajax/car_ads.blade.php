@@ -27,6 +27,9 @@
                         {{-- <img src="{{ asset('storage/uploads/systemPics/noImage.png') }}" width="100%" height="100%" alt="Photo"> --}}
                         <img class="img-fluid" src="{{ asset('storage/uploads/systemPics/noImage.png') }}" alt="Photo" />
                     @endif
+                    @if ($adv->ads_status==2)
+                        <a class="ended" >مُنتهي</a>
+                    @endif
                 </div>
                 <div class="card-image-overlay m-auto">
                     <span class="card-detail-badge">{{$adv->diesel}}</span>
@@ -36,7 +39,7 @@
                 <div class="card-body text-center">
                     <div class="ad-title m-auto">
                         {{-- <h5>Honda Accord LX</h5> --}}
-                        <h5>{{$adv->model->model_name}}</h5>
+                        <h5>{{$adv->model->car_model}}</h5>
                     </div>
                     <a class="ad-btn" href="{{route('web_pages.cars_ads.details', ['id' => $adv->id])}}">استعراض</a>
                 </div>
