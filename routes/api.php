@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiControllers\shared_controller\car_models_controller\CarModelsController;
 use App\Http\Controllers\ApiControllers\shared_controller\cars_parts_controller\CarsPartsExpoController;
 use App\Http\Controllers\ApiControllers\shared_controller\login_controller\LoginController;
 use App\Http\Controllers\ApiControllers\shared_controller\logout_controller\LogoutController;
@@ -35,8 +36,12 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     // for all users
     Route::get('logout', [LogoutController::class, 'userLogout']);
     Route::get('users/{id}', [UserDataController::class, 'getUserInfo']);
+
     Route::get('cars-parts', [CarsPartsExpoController::class, 'getCarsPartsExpo']);
     Route::get('cars-parts/{id}', [CarsPartsExpoController::class, 'getCarPartDetails']);
     Route::post('cars-parts', [CarsPartsExpoController::class, 'addNewCarPartToExpo']);
+
     Route::get('cars-types', [CarsTypesController::class, 'getCarsTypes']);
+
+    Route::get('car-models', [CarModelsController::class, 'getCarModelsByCarId']);
 });

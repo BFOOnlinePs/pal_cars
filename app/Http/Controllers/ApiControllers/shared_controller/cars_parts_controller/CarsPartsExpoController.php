@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\ApiControllers\shared_controller\cars_parts_controller;
 
 use App\Http\Controllers\Controller;
+use App\Models\CarModels;
 use App\Models\PartAcceptModelsModel;
 use App\Models\PartExpoImagesModel;
 use App\Models\PartExpoModel;
@@ -101,8 +102,6 @@ class CarsPartsExpoController extends Controller
             'part_pics.*' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048', // array + file|mimes:jpg,jpeg,png,svg
             //image|mimes:jpeg,png,jpg,gif|max:2048
             'car_type' => 'required|exists:cars_type,id',
-            // car model (array)
-            // years (array) for each car model
         ], [
             'part_name.required' => 'الرجاء إرسال إسم القطعة',
             'part_status.required' => 'الرجاء تحديد حالة القطعة',
@@ -112,7 +111,6 @@ class CarsPartsExpoController extends Controller
             // 'part_main_pic' => 'nullable',
             'part_pics.image' => 'يجب ان تكون صورة',
             'part_pics.mimes' => 'الصيغة',
-            // 'part_pics.file' => 'يجب ان تكون ملف',
             'car_type.required' => 'الرجاء تحديد نوع السيارة',
             'car_type.exists' => 'نوع السيارة غير موجود',
         ]);
@@ -123,6 +121,18 @@ class CarsPartsExpoController extends Controller
                 'message' => $validator->errors()->first()
             ], 422);
         }
+
+        // ex format:
+        // "car_models": [
+        //     {
+        //         "car_model_name": "my model",
+        //         "car_model_years": "[\"2020\",\"2022\"]" // you can not send it in the body, or send it with empty string '' / it has default value
+        //     },
+        //     {
+        //         "car_model_name": "my model 2",
+        //         "car_model_years": "[\"2020\",\"2022\",\"2023\"]"
+        //     }
+        // ]
 
         $part_expo = new PartExpoModel();
         $part_expo->part_name = $request->input('part_name');
@@ -163,11 +173,31 @@ class CarsPartsExpoController extends Controller
                 }
             }
 
-
             // for car model
+            if ($request->has('car_models')) {
+                $new_car_models = $request->input('car_models');
+                foreach ($new_car_models as $new_car_model) {
+                    // return $new_car_model['car_model_name'];
+                    $car_model = new CarModels();
+                    $car_model->car_id = $request->input('car_type');
+                    $car_model->car_model = $new_car_model['car_model_name'];
+                    $car_model->status = 0; // so it can't be used for everyone. only the user added it
 
+                    if ($car_model->save()) {
+                        $part_accept_models = new PartAcceptModelsModel();
+                        $part_accept_models->part_id = $part_expo->id;
+                        $part_accept_models->part_model_id = $car_model->id;
+                        $part_accept_models->part_model_years = $new_car_model['car_model_years'] ?? '-';
+                        $part_accept_models->save();
+                    }
+                }
+                // return response();
+            }
         }
 
-        return $part_expo;
+        return response()->json([
+            'status' => true,
+            'message' => 'تمت إضافة القطعة للمعرض بنجاح'
+        ]);
     }
 }
