@@ -16,7 +16,12 @@
           <tr>
               <td>{{$key->car_model}}</td>
               <td>
-                <img src="{{ asset('storage/uploads/carModelsPics/' . $key->car_model_pic) }}" style="cursor: pointer;" width="50px"  alt="" onclick="openPic({{$key}})">
+                @if ($key->car_model_pic && file_exists(public_path('storage/uploads/carModelsPics/' . $key->car_model_pic)))
+                    <img src="{{ asset('storage/uploads/carModelsPics/' . $key->car_model_pic) }}" style="cursor: pointer;" width="50px"  alt="" onclick="openPic({{$key}})">
+                @else
+                    <img src="{{ asset('storage/uploads/systemPics/noImage.png') }}" width="50px" alt="Photo">
+                @endif
+                {{-- <img src="{{ asset('storage/uploads/carModelsPics/' . $key->car_model_pic) }}" style="cursor: pointer;" width="50px"  alt="" onclick="openPic({{$key}})"> --}}
               </td>
               <td>
                 {{-- <div class="btn-group btn-group-sm">

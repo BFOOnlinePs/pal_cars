@@ -221,7 +221,7 @@
         </div>
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">إلغاء</button>
-          <button type="submit" class="btn btn-info"><i class="fa fa-filter"></i> تطبيق الفلترة</button>
+          <button type="submit" class="btn btn-info"><i class="fa fa-filter"></i>  بحث</button>
             </form>
         </div>
       </div>

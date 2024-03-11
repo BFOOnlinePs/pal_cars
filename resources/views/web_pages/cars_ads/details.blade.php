@@ -57,16 +57,33 @@
                       @endif
 
                       <h6 class="font-weight-bold mt-3">معلومات المُعلن</h6>
-                      <ul class="list-group">
-                        <li class="list-group-item">اسم المعلن: {{$data->visitor_name}}</li>
-                        <li class="list-group-item">هاتف: {{$data->visitor_mobile}}</li>
-                        <li class="list-group-item">هاتف 2: {{$data->visitor_Mobile2}}</li>
-                        <li class="list-group-item">البريد الإلكتروني: {{$data->visitor_email}}</li>
-                        <li class="list-group-item">المحافظة: {{$data->visitorCity->city_name}}</li>
-                        {{-- <li class="list-group-item">العنوان: </li> --}}
-                        <!-- Add more details as needed -->
-                      </ul>
+                      <div class="table-responsive">
+                        <table class="table table-bordered" id="selectedPairsTable">
+                            <tbody>
+                                <tr>
+                                    <td>اسم المُعلن</td>
+                                    <td>{{$data->visitor_name}}</td>
+                                </tr>
+                                <tr>
+                                    <td>هاتف</td>
+                                    <td>{{$data->visitor_mobile}}</td>
+                                </tr>
+                                <tr>
+                                    <td>هاتف 2</td>
+                                    <td>{{$data->visitor_Mobile2}}</td>
+                                </tr>
+                                <tr>
+                                    <td>البريد الإلكتروني</td>
+                                    <td>{{$data->visitor_email}}</td>
+                                </tr>
+                                <tr>
+                                    <td>المحافظة</td>
+                                    <td>{{$data->visitorCity->city_name}}</td>
+                                </tr>
 
+                            </tbody>
+                        </table>
+                    </div>
 
             </div>
         </div>
@@ -93,11 +110,12 @@
                     <!-- /.col -->
                     <div class="col-md-4 col-sm-6 col-12">
                       <div class="info-box">
-                        <span class="info-box-icon bg-success"><i class="fa fa-dollar-sign"></i></span>
+                        {{-- <span class="info-box-icon bg-success"><i class="fa fa-dollar-sign"></i></span> --}}
+                        <span class="info-box-icon bg-success"><i class="fas fa-coins"></i></span>
 
                         <div class="info-box-content">
                           <span class="info-box-text">السعر</span>
-                          <span class="info-box-number">{{$data->price}}</span>
+                          <span class="info-box-number">{{$data->price}} ₪</span>
                         </div>
                         <!-- /.info-box-content -->
                       </div>
@@ -137,33 +155,92 @@
                       </div> --}}
 
                       <h6 class="font-weight-bold mt-3">معلومات السيارة</h6>
-                      <ul class="list-group">
-                        <li class="list-group-item">لون السيارة: {{$data->color->color}}</li>
-                        <li class="list-group-item">موديل السيارة: {{$data->model->car_model}}</li>
-                        <li class="list-group-item">عدد الركاب: {{$data->car_count_rokab}}</li>
-                        <li class="list-group-item">عداد السيارة: {{$data->car_counter}}</li>
-                        <li class="list-group-item">طراز المحرك: {{$data->car_motor}}</li>
-                        <li class="list-group-item">قوة الماتور: {{$data->car_motor_size}}</li>
-                        <li class="list-group-item">نوع الوقود: {{$data->diesel}}</li>
-                        <li class="list-group-item">نوع الجير: {{$data->geer_type}}</li>
-                        <li class="list-group-item">الزجاج: {{$data->glass}}</li>
-                        <li class="list-group-item">الإضافات المتوفرة: {{$data->addon}}</li>
-                        <li class="list-group-item">عدد المالكين السابقين: {{$data->old_owner}}</li>
-                        <li class="list-group-item">أصل السيارة: {{$data->car_sours}}</li>
-                        <li class="list-group-item">رخصة السيارة: {{$data->agreement}}</li>
-                        <li class="list-group-item">معلومات إضافية: {{$data->additional_info}}</li>
-                        <li class="list-group-item">معروضة للـ: {{$data->view_for}}</li>
-                        <li class="list-group-item">المناطق: {{$data->id}}</li>
-                        <li class="list-group-item">طريقة الدفع: {{$data->payment_method}}</li>
-                        @if($data->ads_status==1)
-                        <li class="list-group-item">حالة الإعلان: مٌفعل</li>
-                        @elseif($data->ads_status==2)
-                        <li class="list-group-item">حالة الإعلان: منتهي</li>
-                        @endif
-                        {{-- <li class="list-group-item">: {{$data->}}</li>
-                        <li class="list-group-item">: {{$data->}}</li> --}}
-                        <!-- Add more details as needed -->
-                      </ul>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="selectedPairsTable">
+                            <tbody>
+                                <tr>
+                                    <td>لون السيارة</td>
+                                    <td>{{$data->color->color}}</td>
+                                </tr>
+                                <tr>
+                                    <td>موديل السيارة</td>
+                                    <td>{{$data->model->car_model}}</td>
+                                </tr>
+                                <tr>
+                                    <td>عدد الركاب</td>
+                                    <td>{{$data->car_count_rokab}}</td>
+                                </tr>
+                                <tr>
+                                    <td>عداد السيارة</td>
+                                    <td>{{$data->car_counter}}</td>
+                                </tr>
+                                <tr>
+                                    <td>طراز المحرك</td>
+                                    <td>{{$data->car_motor}}</td>
+                                </tr>
+                                <tr>
+                                    <td>قوة الماتور</td>
+                                    <td>{{$data->car_motor_size}}</td>
+                                </tr>
+                                <tr>
+                                    <td>نوع الوقود</td>
+                                    <td>{{$data->diesel}}</td>
+                                </tr>
+                                <tr>
+                                    <td>نوع الجير</td>
+                                    <td>{{$data->geer_type}}</td>
+                                </tr>
+                                <tr>
+                                    <td>الزجاج</td>
+                                    <td>{{$data->glass}}</td>
+                                </tr>
+                                <tr>
+                                    <td>الإضافات المتوفرة</td>
+                                    <td>{{$data->addon}}</td>
+                                </tr>
+                                <tr>
+                                    <td>عدد المالكين السابقين</td>
+                                    <td>{{$data->old_owner}}</td>
+                                </tr>
+                                <tr>
+                                    <td>أصل السيارة</td>
+                                    <td>{{$data->car_sours}}</td>
+                                </tr>
+                                <tr>
+                                    <td>رخصة السيارة</td>
+                                    <td>{{$data->agreement}}</td>
+                                </tr>
+                                <tr>
+                                    <td>معلومات إضافية</td>
+                                    <td>{{$data->additional_info}}</td>
+                                </tr>
+                                <tr>
+                                    <td>معروضة للـ</td>
+                                    <td>{{$data->view_for}}</td>
+                                </tr>
+                                <tr>
+                                    <td>المناطق</td>
+                                    <td>{{$data->id}}</td>
+                                </tr>
+                                <tr>
+                                    <td>طريقة الدفع</td>
+                                    <td>{{$data->payment_method}}</td>
+                                </tr>
+                                <tr>
+                                    <td>حالة الإعلان</td>
+                                    @if($data->ads_status==1)
+                                    <td><small class="badge badge-success">فعَّال</small></td>
+                                    @elseif($data->ads_status==2)
+                                    <td><small class="badge badge-danger">مُنتهي</small></td>
+                                    @endif
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+
                     {{-- </div> --}}
                   {{-- </div> --}}
 

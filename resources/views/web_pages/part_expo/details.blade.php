@@ -25,11 +25,11 @@
                 <div class="row">
                     <div class="col-12 col-md-4">
                         <div class="info-box bg-gradient-info">
-                            <span class="info-box-icon"><i class="fas fa-dollar-sign"></i></span>
+                            <span class="info-box-icon"><i class="fas fa-coins"></i></span>
 
                             <div class="info-box-content">
                               <span class="info-box-text">السعر</span>
-                              <span class="info-box-number">{{$data->part_price}}</span>
+                              <span class="info-box-number">{{$data->part_price}} ₪</span>
                             </div>
                         </div>
                     </div>

@@ -175,7 +175,7 @@
                                 <td><span class="badge bg-info">{{$key->part_status}}</span></td>
                                 @break
                                 @endswitch
-                                <td>{{$key->part_price}}</td>
+                                <td>{{$key->part_price}} ₪</td>
                                 <td>{{ date('Y-m-d', strtotime($key->insert_date)) }}</td>
                                 {{-- @if($key->user) --}}
                                 {{-- <td>{{$key->user->name}}</td> --}}
