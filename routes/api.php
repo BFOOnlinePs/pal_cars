@@ -44,4 +44,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('cars-types', [CarsTypesController::class, 'getCarsTypes']);
 
     Route::get('car-models', [CarModelsController::class, 'getCarModelsByCarId']);
+    Route::post('car-models', [CarModelsController::class, 'addCarModel']);
 });

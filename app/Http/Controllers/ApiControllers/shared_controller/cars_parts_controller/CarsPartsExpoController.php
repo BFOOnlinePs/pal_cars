@@ -177,19 +177,52 @@ class CarsPartsExpoController extends Controller
             if ($request->has('car_models')) {
                 $new_car_models = $request->input('car_models');
                 foreach ($new_car_models as $new_car_model) {
-                    // return $new_car_model['car_model_name'];
-                    $car_model = new CarModels();
-                    $car_model->car_id = $request->input('car_type');
-                    $car_model->car_model = $new_car_model['car_model_name'];
-                    $car_model->status = 0; // so it can't be used for everyone. only the user added it
 
-                    if ($car_model->save()) {
-                        $part_accept_models = new PartAcceptModelsModel();
-                        $part_accept_models->part_id = $part_expo->id;
-                        $part_accept_models->part_model_id = $car_model->id;
-                        $part_accept_models->part_model_years = $new_car_model['car_model_years'] ?? '-';
-                        $part_accept_models->save();
+                    // // return $new_car_model['car_model_name'];
+                    // $car_model = new CarModels();
+                    // $car_model->car_id = $request->input('car_type');
+                    // $car_model->car_model = $new_car_model['car_model_name'];
+                    // $car_model->status = 0; // so it can't be used for everyone. only the user added it
+
+
+
+
+                    // add to db only if it not exists
+                    // else get its id
+                    // save it to the accepted models in both cases
+
+                    // if ($car_model->save()) {
+                    //     $part_accept_models = new PartAcceptModelsModel();
+                    //     $part_accept_models->part_id = $part_expo->id;
+                    //     $part_accept_models->part_model_id = $car_model->id;
+                    //     $part_accept_models->part_model_years = $new_car_model['car_model_years'] ?? '-';
+                    //     $part_accept_models->save();
+                    // }
+
+                    $car_model_in_db = CarModels::where('car_id', $request->input('car_type'))
+                        ->where('car_model', $new_car_model['car_model_name'])->first();
+
+                    $car_model_id = null;
+                    if ($car_model_in_db) {
+                        // get its id
+                        $car_model_id =  $car_model_in_db->id;
+                    } else {
+                        // add to db
+                        $car_model = new CarModels();
+                        $car_model->car_id = $request->input('car_type');
+                        $car_model->car_model = $new_car_model['car_model_name'];
+                        $car_model->status = 0; // so it can't be used for everyone. only the user added it
+
+                        $car_model->save();
+
+                        $car_model_id = $car_model->id;
                     }
+
+                    $part_accept_models = new PartAcceptModelsModel();
+                    $part_accept_models->part_id = $part_expo->id;
+                    $part_accept_models->part_model_id =  $car_model_id;
+                    $part_accept_models->part_model_years = $new_car_model['car_model_years'] ?? '-';
+                    $part_accept_models->save();
                 }
                 // return response();
             }
