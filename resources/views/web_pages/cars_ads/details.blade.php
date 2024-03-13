@@ -70,7 +70,7 @@
                                 </tr>
                                 <tr>
                                     <td>هاتف 2</td>
-                                    <td>{{$data->visitor_Mobile2}}</td>
+                                    <td>{{ $data->visitor_Mobile2 ?? '-' }}</td>
                                 </tr>
                                 <tr>
                                     <td>البريد الإلكتروني</td>
@@ -197,7 +197,7 @@
                                 </tr>
                                 <tr>
                                     <td>الإضافات المتوفرة</td>
-                                    <td>{{$data->addon}}</td>
+                                    <td>{{ $data->addon ?? '-' }}</td>
                                 </tr>
                                 <tr>
                                     <td>عدد المالكين السابقين</td>
@@ -213,7 +213,7 @@
                                 </tr>
                                 <tr>
                                     <td>معلومات إضافية</td>
-                                    <td>{{$data->additional_info}}</td>
+                                    <td>{{ $data->additional_info ?? '-' }}</td>
                                 </tr>
                                 <tr>
                                     <td>معروضة للـ</td>

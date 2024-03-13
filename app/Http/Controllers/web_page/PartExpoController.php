@@ -15,7 +15,7 @@ class PartExpoController extends Controller
 {
     //
     public function index(){
-        $data = PartExpoModel::with('car','user')->get();
+        $data = PartExpoModel::orderBy('created_at', 'desc')->with('car','user')->get();
         $cars = CarsType::get();
         // return $data;
         return view('web_pages.part_expo.index',['data'=>$data,'cars'=>$cars]);
@@ -40,17 +40,17 @@ class PartExpoController extends Controller
         $data = PartExpoModel::where('id',$request->id)->first();
 
         if ($data->delete()){
-            $data = $data = PartExpoModel::with('car','user')->get();
+            $data = $data = PartExpoModel::orderBy('created_at', 'desc')->with('car','user')->get();
             return response()->json([
                 'success'=>'true',
-                'message'=>'تم تعديل البيانات بنجاح',
+                'message'=>'تم الحذف  بنجاح',
                 'view'=>view('web_pages.part_expo.ajax.part_expo_table',['data'=>$data])->render(),
             ]);
         }
         else{
             return response()->json([
                 'success'=>'false',
-                'message'=>'هناك خلل ما لم يتم تعديل البيانات'
+                'message'=>'هناك خلل ما لم يتم الحذف'
             ]);
         }
     }
@@ -81,7 +81,7 @@ class PartExpoController extends Controller
         }
         //
 
-        $parts=PartExpoModel::with('car','user')->whereIn('id',$query->select('id'))->get();
+        $parts=PartExpoModel::orderBy('created_at', 'desc')->with('car','user')->whereIn('id',$query->select('id'))->get();
 
 
         return response()->json([

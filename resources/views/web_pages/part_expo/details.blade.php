@@ -63,11 +63,17 @@
 
 
 
-                                    @if ($data->part_main_pic && file_exists(public_path('storage/uploads/partExpoPics/' . $data->part_main_pic)))
+
                                         <div class="row">
+                                            @if ($data->part_main_pic && file_exists(public_path('storage/uploads/partExpoPics/' . $data->part_main_pic)))
                                             <div class="col-4 mb-2">
                                                 <img id="main_pic" src="{{ asset('storage/uploads/partExpoPics/' . $data->part_main_pic) }}" alt="Image" style="cursor: pointer;" onclick="openPic('{{$data->part_main_pic}}')" class="img-thumbnail">
                                             </div>
+                                            @else
+                                            <div class="col-4 mb-2">
+                                                <img src="{{ asset('storage/uploads/systemPics/noImage.png') }}" width="100%" height="100%" alt="Photo">
+                                            </div>
+                                            @endif
                                             @if(!$images->isEmpty())
                                             @foreach ($images as $image)
                                             <div class="col-4 mb-2">
@@ -76,9 +82,7 @@
                                             @endforeach
                                             @endif
                                         </div>
-                                    @else
-                                        <img src="{{ asset('storage/uploads/systemPics/noImage.png') }}" width="100%" height="100%" alt="Photo">
-                                    @endif
+
 
                                 </div>
                             </div>

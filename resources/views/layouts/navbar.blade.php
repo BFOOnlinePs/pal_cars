@@ -47,7 +47,7 @@
                     <a href="{{ route('web_app_home') }}" class="nav-link">الرئيسية</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('home') }}" class="nav-link">القطع المطلوبة</a>
+                    <a href="{{ route('web_pages.required_parts.index') }}" class="nav-link">القطع المطلوبة</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('web_pages.part_expo.index') }}" class="nav-link">معرض القطع</a>
@@ -62,7 +62,7 @@
                     <a href="{{ route('home') }}" class="nav-link">دفتر السيارة</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('home') }}" class="nav-link">الحوادث</a>
+                    <a href="{{ route('web_pages.accidents.index') }}" class="nav-link">الحوادث</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('web_pages.about_us') }}" class="nav-link">من نحن</a>
@@ -70,7 +70,7 @@
                 <li class="nav-item">
                     <a href="{{ route('web_pages.contact_us') }}" class="nav-link">اتصل بنا</a>
                 </li>
-                @if (auth()->check() && auth()->user()->user_role == '["1"]')
+                @if (auth()->check() && in_array('1', json_decode(auth()->user()->user_role, true)))
                 <li class="nav-item">
                     {{-- <a class="btn btn-sm btn-warning mt-2" href="{{route("dashboard.index")}}">لوحة التحكم</a> --}}
                     {{-- <a class="bg-warning nav-link rounded" href="{{route("dashboard.index")}}">لوحة التحكم</a> --}}

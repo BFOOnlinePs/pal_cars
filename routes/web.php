@@ -424,7 +424,16 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'],function (){
             Route::get('index',[App\Http\Controllers\dashboard\admin\settings\TermsOfUseController::class , 'index'])->name('dashboard.settings.terms_of_use.index');
             Route::post('update',[App\Http\Controllers\dashboard\admin\settings\TermsOfUseController::class , 'update'])->name('dashboard.settings.terms_of_use.update');
         });
+
+        Route::group(['prefix'=>'cars_colors'],function (){
+            Route::get('index',[App\Http\Controllers\dashboard\admin\settings\CarsColorsController::class , 'index'])->name('dashboard.settings.cars_colors.index');
+            Route::post('add',[App\Http\Controllers\dashboard\admin\settings\CarsColorsController::class , 'add'])->name('dashboard.settings.cars_colors.add');
+            Route::post('update',[App\Http\Controllers\dashboard\admin\settings\CarsColorsController::class , 'update'])->name('dashboard.settings.cars_colors.update');
+        });
+
     });
+
+    Route::get('suggestions',[App\Http\Controllers\dashboard\admin\SuggestionsController::class , 'suggestions'])->name('dashboard.suggestions');
 });
 
 Route::group(['prefix'=>'web_pages'],function (){
@@ -451,7 +460,10 @@ Route::group(['prefix'=>'web_pages'],function (){
         Route::post('/search', [App\Http\Controllers\web_page\CarsAdsController::class, 'search'])->name('web_pages.cars_ads.search');
         Route::post('/advanced_search', [App\Http\Controllers\web_page\CarsAdsController::class, 'advanced_search'])->name('web_pages.cars_ads.advanced_search');
     });
-    // Route::group(['prefix' => 'accidents'], function () {
-    //     Route::get('/index', [App\Http\Controllers\web_page\CarsAdsController::class, 'index'])->name('web_pages.cars_ads.index');
-    // });
+    Route::group(['prefix' => 'accidents'], function () {
+        Route::get('/index', [App\Http\Controllers\web_page\AccidentsController::class, 'index'])->name('web_pages.accidents.index');
+    });
+    Route::group(['prefix' => 'required_parts'], function () {
+        Route::get('/index', [App\Http\Controllers\web_page\RequiredPartsController::class, 'index'])->name('web_pages.required_parts.index');
+    });
 });

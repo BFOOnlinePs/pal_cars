@@ -106,6 +106,11 @@
                     <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
                     </ul>
                 </li> --}}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('dashboard.suggestions')}}">اقتراحات الزوار</a>
+                </li>
+
                 <li class="nav-item dropdown">
                     <a id="dropdownSubMenu1" href="{{route('dashboard.settings.index')}}" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false" class="nav-link dropdown-toggle">الإعدادات</a>
@@ -114,6 +119,7 @@
                         <li><a href="{{route('dashboard.settings.cities.index')}}" class="dropdown-item">المدن</a></li>
                         <li><a href="{{route('dashboard.settings.cars_type.index')}}" class="dropdown-item">أنواع السيارات</a></li>
                         <li><a href="{{route('dashboard.settings.terms_of_use.index')}}" class="dropdown-item">شروط الاستخدام</a></li>
+                        <li><a href="{{route('dashboard.settings.cars_colors.index')}}" class="dropdown-item">ألوان السيارات</a></li>
                     </ul>
                 </li>
             </ul>

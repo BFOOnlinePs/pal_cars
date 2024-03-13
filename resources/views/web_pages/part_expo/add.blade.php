@@ -77,14 +77,14 @@
                 <div class="col-md-6">
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">اسم القطعة</label>
+                        <label for="exampleInputEmail1">اسم القطعة <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="part_name" name="part_name" required>
 
                     </div>
 
 
                     <div class="form-group">
-                        <label for="exampleInputPassword1">الحالة</label>
+                        <label for="exampleInputPassword1">الحالة <span class="text-danger">*</span></label>
                         <div class="checkbox-group">
                               <div class="form-check form-check-inline">
                                   <input class="form-check-input" type="radio" name="status" value="1" required>
@@ -109,14 +109,14 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputPassword1">السعر</label>
+                        <label for="exampleInputPassword1">السعر <span class="text-danger">*</span></label>
                         <input type="number" class="form-control" id="part_price" name="part_price" required>
 
                     </div>
 
 
                     <div class="form-group">
-                        <label for="exampleInputPassword1">معلومات القطعة</label>
+                        <label for="exampleInputPassword1">معلومات القطعة <span class="text-danger">*</span></label>
                         <textarea class="form-control" name="part_desc" id="part_desc" rows="5" required></textarea>
 
                     </div>
@@ -151,7 +151,7 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="">نوع السيارة</label>
+                                <label for="">نوع السيارة <span class="text-danger">*</span></label>
                                 <select required id="car_type" name="car_type" class="form-control select2" onchange="updateModels()" style="width: 100%;">
                                     <option value="" disabled selected>--اختيار--</option>
                                     @foreach ($cars as $car)
