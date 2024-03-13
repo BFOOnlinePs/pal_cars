@@ -56,7 +56,7 @@
                                     <label for="user_phone1" class="col-md-4 col-form-label text-md-end">رقم المحمول <span class="text-danger">*</span></label>
 
                                     <div class="col-md-8">
-                                        <input id="user_phone1" type="user_phone1" class="form-control @error('user_phone1') is-invalid @enderror" name="user_phone1" required>
+                                        <input id="user_phone1" type="tel" class="form-control @error('user_phone1') is-invalid @enderror" name="user_phone1" required pattern="[0-9]{10}">
 
                                         @error('user_phone1')
                                             <span class="invalid-feedback" role="alert">

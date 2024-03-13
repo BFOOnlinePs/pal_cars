@@ -53,7 +53,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         @include('layouts.navbar')
         <!-- Navbar -->
-        @if(auth()->check() && auth()->user()->user_role == '["1"]')
+        {{-- @if(auth()->check() && auth()->user()->user_role == '["1"]') --}}
+        @if(auth()->check() && in_array('1', json_decode(auth()->user()->user_role, true)))
         <div id="navbarContainer">
             @include('dashboard.layouts.navbar')
         </div>

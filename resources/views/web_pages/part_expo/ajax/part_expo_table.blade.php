@@ -15,7 +15,7 @@
             {{-- <th colspan="2">محمول</th> --}}
 
             <th>عرض</th>
-            @if(auth()->check() && auth()->user()->user_role == '["1"]')
+            @if(auth()->check() && in_array('1', json_decode(auth()->user()->user_role, true)))
             <th>حذف</th>
             @endif
         </tr>
@@ -74,7 +74,7 @@
                 {{-- @endif --}}
 
                 <td><a href="{{ route('web_pages.part_expo.details', ['id' => $key->id]) }}" class="btn btn-sm btn-success text-white"><i class="fas fa-search"></i></a></td>
-                @if(auth()->check() && auth()->user()->user_role == '["1"]')
+                @if(auth()->check() && in_array('1', json_decode(auth()->user()->user_role, true)))
                 <td><button class="btn btn-sm btn-danger text-white" onclick="delete_car_part({{$key->id}})"><i class="fas fa-trash"></i></button></td>
                 @endif
             </tr>

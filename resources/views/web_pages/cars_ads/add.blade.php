@@ -117,13 +117,13 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">موديل السيارة</label>
+                            <label for="exampleInputEmail1">موديل السيارة <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="car_model" name="car_model" required>
                         </div>
                     </div>
                     <div class="col-md-2">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">سنة التصنيع</label>
+                            <label for="exampleInputEmail1">سنة التصنيع <span class="text-danger">*</span></label>
                             <select required id="production_year" name="production_year" class="form-control select2" style="width: 100%;">
                                 <option value="" disabled selected>--موديل سنة--</option>
                                 @foreach ($years as $year)
@@ -134,7 +134,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">لون السيارة</label>
+                            <label for="exampleInputEmail1">لون السيارة <span class="text-danger">*</span></label>
                             <select required id="car_color" name="car_color" class="form-control select2" style="width: 100%;">
                                 <option value="" disabled selected>--اللون--</option>
                                 @foreach ($colors as $color)
@@ -145,7 +145,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">عدد الركاب</label>
+                            <label for="exampleInputEmail1">عدد الركاب <span class="text-danger">*</span></label>
                             <select required id="seats_number" name="seats_number" class="form-control select2" style="width: 100%;">
                                 <option value="" disabled selected>--عدد الركاب--</option>
                                 @foreach ($seats as $seat)
@@ -158,27 +158,27 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">عداد السيارة</label>
-                            <input type="text" class="form-control" id="car_counter" name="car_counter" required>
+                            <label for="exampleInputEmail1">عداد السيارة <span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" id="car_counter" name="car_counter" required>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">طراز المحرك</label>
+                            <label for="exampleInputEmail1">طراز المحرك <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="car_motor" name="car_motor" required>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">قوة الماتور</label>
-                            <input type="text" class="form-control" id="motor_size" name="motor_size" required>
+                            <label for="exampleInputEmail1">قوة الماتور <span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" id="motor_size" name="motor_size" required>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">نوع الوقود</label>
+                            <label for="exampleInputEmail1">نوع الوقود <span class="text-danger">*</span></label>
                             <div class="checkbox-group mt-2">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="diesel" value="ديزل" required>
@@ -204,7 +204,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">نوع الجير</label>
+                            <label for="exampleInputEmail1">نوع الجير <span class="text-danger">*</span></label>
                             <div class="checkbox-group mt-2">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="geer_type" value="عادي" required>
@@ -226,7 +226,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">الزجاج</label>
+                            <label for="exampleInputEmail1">الزجاج <span class="text-danger">*</span></label>
                             <div class="checkbox-group mt-2">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="glass" value="إلكتروني" required>
@@ -244,7 +244,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">الإضافات المتوفرة</label>
+                            <label for="exampleInputEmail1">الإضافات المتوفرة <span class="text-danger">*</span></label>
                             <textarea class="form-control" name="addon" id="addon" rows="5"></textarea>
                         </div>
                     </div>
@@ -300,13 +300,13 @@
 
                     <div class="col-md-2">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">عدد المالكين السابقين</label>
-                            <input type="text" class="form-control" id="old_owner" name="old_owner" required>
+                            <label for="exampleInputEmail1">عدد المالكين السابقين <span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" id="old_owner" name="old_owner" required>
                         </div>
                     </div>
                     <div class="col-md-2">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">أصل السيارة</label>
+                            <label for="exampleInputEmail1">أصل السيارة <span class="text-danger">*</span></label>
                             <select required id="car_sours" name="car_sours" class="form-control select2" style="width: 100%;">
                                 <option value="" disabled selected>--الأصل--</option>
                                 {{-- <option value="">أصل السيارة</option> --}}
@@ -327,7 +327,7 @@
                     </div> --}}
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">رخصة السيارة</label>
+                            <label for="exampleInputEmail1">رخصة السيارة <span class="text-danger">*</span></label>
                             <div class="checkbox-group mt-2">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="agreement" value="فلسطينية" required>
@@ -357,7 +357,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">عرض لـ</label>
+                            <label for="exampleInputEmail1">عرض لـ <span class="text-danger">*</span></label>
                             <div class="checkbox-group mt-2">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="view_for" value="البيع" required>
@@ -380,7 +380,7 @@
 
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">مدة الإعلان</label>
+                            <label for="exampleInputEmail1">مدة الإعلان <span class="text-danger">*</span></label>
                             <select required id="ads_days" name="ads_days" class="form-control select2" style="width: 100%;">
                                 <option value="" disabled selected>--المدة--</option>
                                 @foreach ($adv_days as $day)
@@ -391,8 +391,8 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">المناطق</label>
-                            <select class="form-control select2bs4" multiple="multiple"  id="cities" name="cities[]" style="width: 100%;">
+                            <label for="exampleInputEmail1">المناطق <span class="text-danger">*</span></label>
+                            <select required class="form-control select2bs4" multiple="multiple"  id="cities" name="cities[]" style="width: 100%;">
                                 @foreach ($cities as $city)
                                 <option value="{{$city->id}}">{{$city->city_name}}</option>
                                 @endforeach
@@ -403,14 +403,14 @@
 
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">السعر</label>
-                            <input type="text" class="form-control" id="price" name="price" required>
+                            <label for="exampleInputEmail1">السعر <span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" id="price" name="price" required>
                         </div>
                     </div>
 
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">طريقة الدفع</label>
+                            <label for="exampleInputEmail1">طريقة الدفع <span class="text-danger">*</span></label>
                             <div class="checkbox-group mt-2">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="payment_method" value="نقداً" required>
@@ -439,13 +439,13 @@
                     <input type="text" hidden name="add_by" value="{{$user->id}}">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">اسم المعلن</label>
+                            <label for="exampleInputEmail1">اسم المعلن <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="visitor_name" name="visitor_name" value="{{$user->name}}" required>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">هاتف</label>
+                            <label for="exampleInputEmail1">هاتف <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="visitor_phone1" name="visitor_phone1" value="{{$user->user_phone1}}" required>
                         </div>
                     </div>
@@ -463,7 +463,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">المدينة</label>
+                            <label for="exampleInputEmail1">المدينة <span class="text-danger">*</span></label>
                             <select required id="visitor_city" name="visitor_city" class="form-control select2" style="width: 100%;">
                                 @foreach ($cities as $city)
                                 <option value="{{$city->id}}" {{ $user->city && $user->city->id == $city->id ? 'selected' : '' }}>{{$city->city_name}}</option>
@@ -474,7 +474,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">العنوان</label>
+                            <label for="exampleInputEmail1">العنوان <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="visitor_address" name="visitor_address" value="{{$user->user_address}}" required>
                         </div>
                     </div>

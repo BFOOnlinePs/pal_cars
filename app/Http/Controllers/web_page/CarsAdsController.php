@@ -236,6 +236,7 @@ class CarsAdsController extends Controller
             $cityValue = [$request->city];
             return $query->whereJsonContains('cities', $cityValue);
         })
+        ->orderBy('created_at', 'desc')
         ->get();
 
         return response()->json([
@@ -341,6 +342,7 @@ class CarsAdsController extends Controller
         ->when($request->filled('payment_method'), function ($query) use ($request) {
             return $query->where('payment_method', '=', $request->payment_method);
         })
+        ->orderBy('created_at', 'desc')
         ->get();
 
 

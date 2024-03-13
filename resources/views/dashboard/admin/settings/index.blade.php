@@ -59,6 +59,21 @@
         </div>
     </div>
 
+    <div class="col-lg-3 col-6">
+
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h3>ألوان السيارات</h3>
+                <p>ألوان السيارات</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-palette"></i>
+            </div>
+            <a href="{{ route('dashboard.settings.cars_colors.index') }}" class="small-box-footer">المزيد <i
+                    class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+
     <!-- ./col -->
     {{-- <div class="col-lg-3 col-6">
       <!-- small box -->
