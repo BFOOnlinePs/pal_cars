@@ -65,6 +65,31 @@
                             </div>
                         </div>
 
+                        <div class="mt-2">
+                            <div class="div p-1 ">
+                                <button onclick="login('1234567890','123456789')" type="button" class="btn btn-info form-control">أدمن</button>
+                            </div>
+                            <div class="div p-1">
+                                <button onclick="login('1111111111','123456789')" type="button" class="btn btn-info form-control">شركة التأمين</button>
+                            </div>
+                            <div class="div p-1">
+                                <button onclick="login('2222222222','123456789')" type="button" class="btn btn-info form-control">محل قطع سيارات</button>
+                            </div>
+                            <div class="div p-1">
+                                <button onclick="login('3333333333','123456789')" type="button" class="btn btn-info form-control">كراج</button>
+                            </div>
+                            <div class="div p-1">
+                                <button onclick="login('abdelmajeed@jawwal.ps','123456789')" type="button" class="btn btn-info form-control">مخمن</button></button>
+                            </div>
+
+                            <div class="div p-1">
+                                <button onclick="login('4444444444','123456789')" type="button" class="btn btn-info form-control">ونش</button>
+                            </div>
+                            <div class="div p-1">
+                                <button onclick="login('0000000000','123456789')" type="button" class="btn btn-info form-control">زائر</button>
+                            </div>
+                        </div>
+
                         <div class="row mb-0">
                             <div class="col-md-4 mt-3 offset-md-4 text-center">
                                 <a href="{{route('register')}}">التسجيل في الموقع</a>
@@ -76,4 +101,13 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+<script>
+    function login(username,password) {
+        document.getElementById('user_phone1').value = username;
+        document.getElementById('password').value = password;
+    }
+</script>
 @endsection

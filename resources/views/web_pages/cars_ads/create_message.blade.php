@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title')
+{{-- @section('title')
     معرض السيارات
 @endsection
 @section('header_title')
@@ -10,7 +10,7 @@
 @endsection
 @section('header_title_link')
     معرض السيارات
-@endsection
+@endsection --}}
 @section('style')
 <style>
     .card {

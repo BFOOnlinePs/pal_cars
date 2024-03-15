@@ -275,6 +275,7 @@
         e.preventDefault();
 
         console.log(models_array);
+        console.log($('#years_models_part').val());
 
         var formData = new FormData();
 
@@ -296,6 +297,8 @@
         formData.append('years_models_part', $('#years_models_part').val());
         formData.append('user_id', userId);
         formData.append('car_models', JSON.stringify(models_array));
+
+        console.log(formData);
 
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
 

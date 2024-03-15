@@ -434,6 +434,39 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'],function (){
     });
 
     Route::get('suggestions',[App\Http\Controllers\dashboard\admin\SuggestionsController::class , 'suggestions'])->name('dashboard.suggestions');
+
+    Route::group(['prefix'=>'cars_ads'],function (){
+        Route::get('/index', [App\Http\Controllers\dashboard\admin\CarsAdsController::class, 'index'])->name('dashboard.cars_ads.index');
+        Route::post('/post_adv', [App\Http\Controllers\dashboard\admin\CarsAdsController::class, 'post_adv'])->name('dashboard.cars_ads.post_adv');
+        Route::post('/un_post_adv', [App\Http\Controllers\dashboard\admin\CarsAdsController::class, 'un_post_adv'])->name('dashboard.cars_ads.un_post_adv');
+        Route::post('/re_post_adv', [App\Http\Controllers\dashboard\admin\CarsAdsController::class, 're_post_adv'])->name('dashboard.cars_ads.re_post_adv');
+        Route::post('/delete_adv', [App\Http\Controllers\dashboard\admin\CarsAdsController::class, 'delete_adv'])->name('dashboard.cars_ads.delete_adv');
+    });
+
+    Route::group(['prefix'=>'parts_ads'],function (){
+        Route::get('/index', [App\Http\Controllers\dashboard\admin\PartsAdsController::class, 'index'])->name('dashboard.parts_ads.index');
+        Route::post('/delete', [App\Http\Controllers\dashboard\admin\PartsAdsController::class, 'delete'])->name('dashboard.parts_ads.delete');
+    });
+
+    Route::group(['prefix'=>'accident_announcements'],function (){
+        Route::get('/index', [App\Http\Controllers\dashboard\admin\AccidentAnnouncementsController::class, 'index'])->name('dashboard.accident_announcements.index');
+        Route::get('/details/{id}', [App\Http\Controllers\dashboard\admin\AccidentAnnouncementsController::class, 'details'])->name('dashboard.accident_announcements.details');
+    });
+
+    //الداشبورد لشركة التأمين
+    Route::group(['prefix'=>'insurance_company'],function (){
+        Route::group(['prefix' => 'company_information'], function () {
+            Route::get('index/{id}',[App\Http\Controllers\dashboard\insurance_company\CompanyInformationController::class , 'index'])->name('dashboard.insurance_company.company_information.index');
+            Route::post('update',[App\Http\Controllers\dashboard\insurance_company\CompanyInformationController::class , 'update'])->name('dashboard.insurance_company.company_information.update');
+        });
+        Route::group(['prefix' => 'accidents'], function () {
+            Route::get('index/{id}',[App\Http\Controllers\dashboard\insurance_company\AccidentsController::class , 'index'])->name('dashboard.insurance_company.accidents.index');
+            Route::get('details/{id}',[App\Http\Controllers\dashboard\insurance_company\AccidentsController::class , 'details'])->name('dashboard.insurance_company.accidents.details');
+            Route::get('details_notification/{id}/{notification_id}',[App\Http\Controllers\dashboard\insurance_company\AccidentsController::class , 'details_notification'])->name('dashboard.insurance_company.accidents.details_notification');
+        });
+    });
+
+
 });
 
 Route::group(['prefix'=>'web_pages'],function (){
@@ -462,8 +495,13 @@ Route::group(['prefix'=>'web_pages'],function (){
     });
     Route::group(['prefix' => 'accidents'], function () {
         Route::get('/index', [App\Http\Controllers\web_page\AccidentsController::class, 'index'])->name('web_pages.accidents.index');
+        Route::post('/create', [App\Http\Controllers\web_page\AccidentsController::class, 'create'])->name('web_pages.accidents.create');
     });
     Route::group(['prefix' => 'required_parts'], function () {
         Route::get('/index', [App\Http\Controllers\web_page\RequiredPartsController::class, 'index'])->name('web_pages.required_parts.index');
+        Route::get('/choose_car_type', [App\Http\Controllers\web_page\RequiredPartsController::class, 'choose_car_type'])->name('web_pages.required_parts.choose_car_type');
+        Route::get('/add/{id}', [App\Http\Controllers\web_page\RequiredPartsController::class, 'add'])->name('web_pages.required_parts.add');
+        Route::post('/create', [App\Http\Controllers\web_page\RequiredPartsController::class, 'create'])->name('web_pages.required_parts.create');
+
     });
 });

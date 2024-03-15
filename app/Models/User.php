@@ -65,4 +65,14 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Cities::class, 'user_city', 'id');
     }
+
+    public function accidents()
+    {
+        return $this->hasMany(AccidentsModel::class,'id','Insurance_company_id');
+    }
+
+    public function people_accident()
+    {
+        return $this->hasMany(AccidentsModel::class,'id','user_id');
+    }
 }
