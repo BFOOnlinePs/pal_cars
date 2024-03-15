@@ -43,7 +43,7 @@ class CarsAdsController extends Controller
     //
     public function index(){
         //here make filter in the index page
-        $cars_ads = CarsAdsModel::orderBy('created_at', 'desc')->where('ads_status','!=',0)->with('model','carType')->get();
+        $cars_ads = CarsAdsModel::orderBy('created_at', 'desc')->where('ads_status','=',1)->with('model','carType')->get();
         $cars = CarsType::get();
         $cities = Cities::get();
         $colors = ColorsModel::get();

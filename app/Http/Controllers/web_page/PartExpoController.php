@@ -137,31 +137,48 @@ class PartExpoController extends Controller
             $years_models_part = json_decode($request->years_models_part, true);
             $car_models = json_decode($request->car_models, true);
 
-            if($years_models_part!=null){
-                if(count($years_models_part)!=0){
-                    $years = $years_models_part;
-
-                    foreach ($years as $year) {
-                        $part_accept_model = new PartAcceptModelsModel();
-                        $part_accept_model->part_id= $insertedId;
-                        $part_accept_model->part_model_id=$year['model'];
-                        $part_accept_model->part_model_years=json_encode($year['years']);
-                        $part_accept_model->save();
+            if($car_models!=null && count($car_models)!=0){
+                foreach ($car_models as $model) {
+                    $part_accept_model = new PartAcceptModelsModel();
+                    $part_accept_model->part_id=$insertedId;
+                    $part_accept_model->part_model_id=$model;
+                    if($years_models_part!=null && count($years_models_part)!=0){
+                        foreach ($years_models_part as $year) {
+                            if ($year['model'] == $model) {
+                                $part_accept_model->part_model_years=json_encode($year['years']);
+                                break;
+                            }
+                        }
                     }
+                    $part_accept_model->save();
                 }
             }
-            elseif($car_models!=null){
 
-                if(count($car_models)!=0){
+            // if($years_models_part!=null){
+            //     if(count($years_models_part)!=0){
+            //         $years = $years_models_part;
 
-                    foreach ($car_models as $model) {
-                        $part_accept_model = new PartAcceptModelsModel();
-                        $part_accept_model->part_id=$insertedId;
-                        $part_accept_model->part_model_id=$model;
-                        $part_accept_model->save();
-                    }
-                }
-            }
+            //         foreach ($years as $year) {
+            //             $part_accept_model = new PartAcceptModelsModel();
+            //             $part_accept_model->part_id= $insertedId;
+            //             $part_accept_model->part_model_id=$year['model'];
+            //             $part_accept_model->part_model_years=json_encode($year['years']);
+            //             $part_accept_model->save();
+            //         }
+            //     }
+            // }
+            // elseif($car_models!=null){
+
+            //     if(count($car_models)!=0){
+
+            //         foreach ($car_models as $model) {
+            //             $part_accept_model = new PartAcceptModelsModel();
+            //             $part_accept_model->part_id=$insertedId;
+            //             $part_accept_model->part_model_id=$model;
+            //             $part_accept_model->save();
+            //         }
+            //     }
+            // }
 
             if ($request->hasFile('other_images')) {
 

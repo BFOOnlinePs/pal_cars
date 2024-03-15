@@ -231,8 +231,10 @@
                                     <td>حالة الإعلان</td>
                                     @if($data->ads_status==1)
                                     <td><small class="badge badge-success">فعَّال</small></td>
+                                    @elseif($data->ads_status==0)
+                                    <td><small class="badge badge-danger">بانتظار المُوافقة</small></td>
                                     @elseif($data->ads_status==2)
-                                    <td><small class="badge badge-danger">مُنتهي</small></td>
+                                    <td><small class="badge badge-warning">ملغي</small></td>
                                     @endif
                                 </tr>
 

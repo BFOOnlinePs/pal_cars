@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\NotificationsModel;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // $notifications = NotificationsModel::where('user_id',auth()->id())->get();
+        // return redirect()->intended($this->redirectPath())->with('notifications', $notifications);
+        // return view('home',['notifications'=>$notifications]);
         return view('home');
     }
 }

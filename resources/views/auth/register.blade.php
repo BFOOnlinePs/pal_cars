@@ -72,7 +72,12 @@
                                     <label for="user_phone2" class="col-md-4 col-form-label text-md-end">جوال 2</label>
 
                                     <div class="col-md-8">
-                                        <input id="user_phone2" type="user_phone2" class="form-control" name="user_phone2">
+                                        <input id="user_phone2" type="tel" class="form-control @error('user_phone2') is-invalid @enderror" name="user_phone2" pattern="[0-9]{10}">
+                                        @error('user_phone2')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
 
