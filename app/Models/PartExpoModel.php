@@ -21,6 +21,14 @@ class PartExpoModel extends Model
         return $this->belongsTo(User::class,'insert_by','id');
     }
 
-   
+    public function carType()
+    {
+        return $this->belongsTo(CarsType::class,'part_car_type','id');
+    }
+
+    public function partImages(){
+        return $this->hasMany(PartExpoImagesModel::class, 'id', 'part_id');
+    }
+
 
 }
