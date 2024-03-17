@@ -50,7 +50,6 @@ class CarsPartsExpoController extends Controller
             ->orderBy('insert_date', 'desc')
             ->paginate(10);
 
-        // pagination object
         return response()->json([
             'status' => true,
             'pagination' => [
@@ -60,7 +59,6 @@ class CarsPartsExpoController extends Controller
                 'total_items' => $cars_parts_expo->total(),
             ],
             'cars_parts' => $cars_parts_expo->values(),
-
         ]);
     }
 

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ApiControllers\shared_controller\car_models_controller\CarModelsController;
+use App\Http\Controllers\ApiControllers\shared_controller\cars_ads_controller\CarsAdsController;
+use App\Http\Controllers\ApiControllers\shared_controller\cars_expo_controller\CarsExpoController;
 use App\Http\Controllers\ApiControllers\shared_controller\cars_parts_controller\CarsPartsExpoController;
 use App\Http\Controllers\ApiControllers\shared_controller\login_controller\LoginController;
 use App\Http\Controllers\ApiControllers\shared_controller\logout_controller\LogoutController;
@@ -32,19 +34,23 @@ Route::get('terms-of-use', [SystemSettingsController::class, 'getTermsOfUse']); 
 //     return $request->user();
 // });
 
+Route::get('cars-parts', [CarsPartsExpoController::class, 'getCarsPartsExpo']);
+Route::get('cars-parts/{id}', [CarsPartsExpoController::class, 'getCarPartDetails']);
+Route::post('cars-parts', [CarsPartsExpoController::class, 'addNewCarPartToExpo']);
+
+Route::get('cars-types', [CarsTypesController::class, 'getCarsTypes']);
+
+Route::get('car-models', [CarModelsController::class, 'getCarModelsByCarId']);
+Route::post('car-models', [CarModelsController::class, 'addCarModel']);
+
+// cars expo ads
+Route::get('cars-ads', [CarsAdsController::class, 'getCarsAds']);
+
+
 Route::group(['middleware' => ['auth:sanctum']], function () {
     // for all users
     Route::get('logout', [LogoutController::class, 'userLogout']);
     Route::get('users/{id}', [UserDataController::class, 'getUserInfo']);
 
-    Route::get('cars-parts', [CarsPartsExpoController::class, 'getCarsPartsExpo']);
-    Route::get('cars-parts/{id}', [CarsPartsExpoController::class, 'getCarPartDetails']);
-    Route::post('cars-parts', [CarsPartsExpoController::class, 'addNewCarPartToExpo']);
 
-    Route::get('cars-types', [CarsTypesController::class, 'getCarsTypes']);
-
-    Route::get('car-models', [CarModelsController::class, 'getCarModelsByCarId']);
-    Route::post('car-models', [CarModelsController::class, 'addCarModel']);
-
-    //
 });
