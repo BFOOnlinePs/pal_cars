@@ -19,6 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('web_app_home');
 
+Route::get('/generate', function () {
+    Artisan::call('storage:link');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
