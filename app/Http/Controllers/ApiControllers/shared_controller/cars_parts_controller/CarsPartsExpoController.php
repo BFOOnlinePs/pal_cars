@@ -97,7 +97,7 @@ class CarsPartsExpoController extends Controller
             'part_price' => 'required',
             'part_details' => 'required',
             'part_main_pic' => 'nullable|image', // file|mimes:jpg,jpeg,png,svg
-            'part_pics.*' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048', // array + file|mimes:jpg,jpeg,png,svg
+            'part_pics.*' => 'image|mimes:jpg,png,jpeg,gif,svg', // array + file|mimes:jpg,jpeg,png,svg
             //image|mimes:jpeg,png,jpg,gif|max:2048
             'car_type' => 'required|exists:cars_type,id',
         ], [

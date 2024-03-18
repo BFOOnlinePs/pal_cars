@@ -34,16 +34,16 @@ Route::get('terms-of-use', [SystemSettingsController::class, 'getTermsOfUse']); 
 //     return $request->user();
 // });
 
+// cars parts
 Route::get('cars-parts', [CarsPartsExpoController::class, 'getCarsPartsExpo']);
 Route::get('cars-parts/{id}', [CarsPartsExpoController::class, 'getCarPartDetails']);
-Route::post('cars-parts', [CarsPartsExpoController::class, 'addNewCarPartToExpo']);
 
 Route::get('cars-types', [CarsTypesController::class, 'getCarsTypes']);
 
 Route::get('car-models', [CarModelsController::class, 'getCarModelsByCarId']);
-Route::post('car-models', [CarModelsController::class, 'addCarModel']);
+Route::post('car-models', [CarModelsController::class, 'addCarModel']); // for who logged in
 
-// cars expo ads
+// cars ads
 Route::get('cars-ads', [CarsAdsController::class, 'getCarsAds']);
 
 
@@ -51,6 +51,11 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     // for all users
     Route::get('logout', [LogoutController::class, 'userLogout']);
     Route::get('users/{id}', [UserDataController::class, 'getUserInfo']);
+
+
+    Route::post('cars-parts', [CarsPartsExpoController::class, 'addNewCarPartToExpo']); // for who logged in
+
+    Route::post('cars-ads', [CarsAdsController::class, 'addNewCarAds']); // for who logged in
 
 
 });
