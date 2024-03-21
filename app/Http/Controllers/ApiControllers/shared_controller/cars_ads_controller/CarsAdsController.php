@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CarModels;
 use App\Models\CarsAdsImagesModel;
 use App\Models\CarsAdsModel;
+use App\Models\Cities;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -43,8 +44,20 @@ class CarsAdsController extends Controller
             $cars_ads->whereJsonContains('cities', $request->input('city-id'));
         }
 
-        $cars_ads = $cars_ads->orderBy('created_at', 'desc')->paginate(10);
+        $cars_ads = $cars_ads->with('carTypeDetails:id,car_type,logo')
+            ->with('model:id,car_model')
+            // ->with('carCities')
+            ->orderBy('created_at', 'desc')->paginate(10);
         // XX order by -> last accepted
+
+        // cities ex: ["1","2","3"]
+        // Map city IDs to names
+        $cars_ads->transform(function ($car_ad) {
+            $city_ids = json_decode($car_ad->cities);
+            $cities = Cities::whereIn('id', $city_ids)->pluck('city_name');
+            $car_ad->cities_names = $cities;
+            return $car_ad;
+        });
 
         return response()->json([
             'status' => true,
@@ -54,7 +67,7 @@ class CarsAdsController extends Controller
                 'per_page' => $cars_ads->perPage(),
                 'total_items' => $cars_ads->total(),
             ],
-            'cars_parts' => $cars_ads->values(),
+            'cars_ads' => $cars_ads->values(),
         ]);
     }
 
@@ -125,10 +138,10 @@ class CarsAdsController extends Controller
             'payment_method.required' => 'الرجاء ارسال طريقة الدفع',
             'payment_method.in' => 'طريقة الدفع غير معرفة',
             'visitor_name.required' => 'الرجاء ارسال إسم صاحب السيارة',
-            'visitor_mobile.required' => 'الرجاء ارسال رقم هاتف المرسل',
-            'visitor_city.required' => 'الرجاء ارسال مدينة المرسل',
-            'visitor_city.exists' => 'مدينة المرسل غير معرفة',
-            'visitor_address.required' => 'الرجاء ارسال عنوان المرسل',
+            'visitor_mobile.required' => 'الرجاء ارسال رقم هاتف المعلن',
+            'visitor_city.required' => 'الرجاء ارسال مدينة المعلن',
+            'visitor_city.exists' => 'مدينة المعلن غير معرفة',
+            'visitor_address.required' => 'الرجاء ارسال عنوان المعلن',
         ]);
 
         if ($validator->fails()) {
@@ -210,7 +223,7 @@ class CarsAdsController extends Controller
                 $images = $request->file('car_pics');
                 foreach ($request->car_pics as $image) {
                     $car_expo_images = new CarsAdsImagesModel();
-                    $folderPath = 'uploads/partExpoPics';
+                    $folderPath = 'uploads/carExpoPics';
                     $extension = $image->getClientOriginalExtension();
                     $fileName = time() . '_' . uniqid() . '.' . $extension;
                     $image->storeAs($folderPath, $fileName, 'public');
@@ -223,6 +236,10 @@ class CarsAdsController extends Controller
             }
 
 
-        return $car_ads;
+        return response()->json([
+            'status' => true,
+            'message' => 'تم إضافة إعلان السيارة بنجاح',
+            'car_ad' => $car_ads
+        ]);
     }
 }

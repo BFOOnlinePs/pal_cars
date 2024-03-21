@@ -14,6 +14,10 @@ class CarsAdsModel extends Model
     {
         return $this->belongsTo(CarsType::class,'car_type','id');
     }
+    public function carTypeDetails()
+    {
+        return $this->belongsTo(CarsType::class,'car_type','id');
+    }
     public function visitorCity()
     {
         return $this->belongsTo(Cities::class,'visitor_city','id');

@@ -21,4 +21,5 @@ class Cities extends Model
     {
         return $this->hasMany(CarsAdsModel::class, 'id', 'visitor_city');
     }
+
 }

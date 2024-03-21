@@ -8,6 +8,7 @@ use App\Http\Controllers\ApiControllers\shared_controller\login_controller\Login
 use App\Http\Controllers\ApiControllers\shared_controller\logout_controller\LogoutController;
 use App\Http\Controllers\ApiControllers\shared_controller\shared_controller\CarsTypesController;
 use App\Http\Controllers\ApiControllers\shared_controller\shared_controller\CitiesController;
+use App\Http\Controllers\ApiControllers\shared_controller\shared_controller\ColorsController;
 use App\Http\Controllers\ApiControllers\shared_controller\shared_controller\SystemSettingsController;
 use App\Http\Controllers\ApiControllers\shared_controller\shared_controller\UserDataController;
 use App\Http\Controllers\ApiControllers\shared_controller\signup_controller\SignupController;
@@ -45,6 +46,9 @@ Route::post('car-models', [CarModelsController::class, 'addCarModel']); // for w
 
 // cars ads
 Route::get('cars-ads', [CarsAdsController::class, 'getCarsAds']);
+
+// colors
+Route::get('colors', [ColorsController::class, 'getColors']);
 
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
