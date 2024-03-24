@@ -108,7 +108,7 @@
                         <li><a href="{{ route('web_pages.required_parts.index') }}" class="dropdown-item">القطع المطلوبة</a></li>
                         <li><a href="{{ route('web_pages.required_parts.choose_car_type') }}" class="dropdown-item">الإعلان عن قطعة المطلوبة</a></li>
                         <li><a href="{{ route('web_pages.required_parts.offers_by_me') }}" class="dropdown-item">عروض بواسطتي</a></li>
-                        <li><a href="" class="dropdown-item">المطلوب بواسطتي</a></li>
+                        <li><a href="{{route('web_pages.required_parts.requests_by_me')}}" class="dropdown-item">المطلوب بواسطتي</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
