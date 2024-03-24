@@ -17,8 +17,14 @@ class Cities extends Model
     {
         return $this->hasMany(User::class, 'user_city', 'id');
     }
+    
     public function ads()
     {
         return $this->hasMany(CarsAdsModel::class, 'id', 'visitor_city');
+    }
+
+    public function part_requests()
+    {
+        return $this->hasMany(RequestModel::class, 'id', 'city');
     }
 }

@@ -19,5 +19,10 @@ class CarModels extends Model
         return $this->hasMany(CarsAdsModel::class,'id','car_model');
     }
 
+    public function request_part()
+    {
+        return $this->hasMany(RequestModel::class,'id','car_model');
+    }
+
 
 }
