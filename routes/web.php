@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Route;
@@ -517,6 +518,11 @@ Route::group(['prefix'=>'web_pages'],function (){
         Route::get('/offer_details/{id}', [App\Http\Controllers\web_page\RequiredPartsController::class, 'offer_details'])->name('web_pages.required_parts.offer_details');
         Route::get('/request_offer_details/{id}', [App\Http\Controllers\web_page\RequiredPartsController::class, 'request_offer_details'])->name('web_pages.required_parts.request_offer_details');
         Route::get('offer_notification/{id}/{notification_id}', [App\Http\Controllers\web_page\RequiredPartsController::class, 'offer_notification'])->name('web_pages.required_parts.offer_notification');
+        Route::get('requests_by_me', [App\Http\Controllers\web_page\RequiredPartsController::class, 'requests_by_me'])->name('web_pages.required_parts.requests_by_me');
+        Route::get('request_offers/{id}', [App\Http\Controllers\web_page\RequiredPartsController::class, 'request_offers'])->name('web_pages.required_parts.request_offers');
+        Route::get('disable_request/{id}', [App\Http\Controllers\web_page\RequiredPartsController::class, 'disable_request'])->name('web_pages.required_parts.disable_request');
+        Route::get('enable_request/{id}', [App\Http\Controllers\web_page\RequiredPartsController::class, 'enable_request'])->name('web_pages.required_parts.enable_request');
+        Route::get('disable_requests', [App\Http\Controllers\web_page\RequiredPartsController::class, 'disable_requests'])->name('web_pages.required_parts.disable_requests');
 
     });
 });

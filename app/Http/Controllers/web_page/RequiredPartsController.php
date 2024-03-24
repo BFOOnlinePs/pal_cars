@@ -13,6 +13,7 @@ use App\Models\RequestModel;
 use App\Models\RequestOfferModel;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 
 class RequiredPartsController extends Controller
@@ -29,6 +30,7 @@ class RequiredPartsController extends Controller
 
         $data = RequestModel::with('car')->whereNotIn('id', $not_interested_parts)
         ->whereNotIn('id',$parts_has_offer)
+        ->orderBy('created_at', 'desc')
         ->get();
 
         return view('web_pages.required_parts.index',['data'=>$data]);
@@ -130,7 +132,7 @@ class RequiredPartsController extends Controller
 
     public function offers_by_me(){
         $user_id = Auth::id();
-        $offers = RequestOfferModel::with('request')->where('offer_from_user_id',$user_id)->get();
+        $offers = RequestOfferModel::orderBy('created_at', 'desc')->with('request')->where('offer_from_user_id',$user_id)->get();
         return view('web_pages.required_parts.offers_by_me',['data'=>$offers]);
     }
 
@@ -258,5 +260,68 @@ class RequiredPartsController extends Controller
 
         }
 
+    }
+
+    public function requests_by_me(){
+        $user_id = Auth::id();
+        $requests_to_view = new Collection();
+        $requests = RequestModel::orderBy('created_at', 'desc')->with('car')->where('user_id',$user_id)->get();
+        foreach($requests as $request){
+            $objectToreturnView = $request;
+            // $objectToreturnView->prices_range =;
+            $offers = RequestOfferModel::orderBy('created_at', 'desc')->where('request_id',$request->id)->get();
+
+            $pricesRange = 'لا توجد أسعار بعد';
+
+            if ($offers->isNotEmpty()) {
+                $minPrice = $offers->min('price_offer');
+                $maxPrice = $offers->max('price_offer');
+                $pricesRange = "$minPrice - $maxPrice";
+            }
+
+            $objectToreturnView->prices_range = $pricesRange;
+            $objectToreturnView->offers_number = count($offers);
+
+            $requests_to_view->add($objectToreturnView);
+        }
+
+        return view('web_pages.required_parts.requests_by_me',['data'=>$requests_to_view]);
+        return $requests_to_view;
+    }
+
+    public function request_offers($id){
+        $request = RequestModel::with('model','city_name')->where('id',$id)->first();
+        $offers = RequestOfferModel::orderBy('created_at', 'desc')->with('offer_by')->where('request_id',$id)->get();
+
+        return view('web_pages.required_parts.request_offers',['request'=>$request,'offers'=>$offers]);
+    }
+
+    public function disable_request($id){
+        $request = RequestModel::where('id',$id)->first();
+        $request->request_status = 0;
+        if($request->save()){
+            return  redirect()->route('web_pages.required_parts.requests_by_me');
+        }
+    }
+
+    public function enable_request($id){
+        $request = RequestModel::where('id',$id)->first();
+        $request->request_status = 1;
+        if($request->save()){
+            return  redirect()->route('web_pages.required_parts.requests_by_me');
+        }
+    }
+
+    public function disable_requests(){
+        $user_id = Auth::id();
+        $requests = RequestModel::orderBy('created_at', 'desc')->where('user_id',$user_id)->get();
+        foreach($requests as $request){
+            $request->request_status = 0;
+            $request->save();
+        }
+
+        // if($request->save()){
+            return  redirect()->route('web_pages.required_parts.requests_by_me');
+        // }
     }
 }
