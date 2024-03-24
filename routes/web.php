@@ -502,6 +502,17 @@ Route::group(['prefix'=>'web_pages'],function (){
         Route::get('/choose_car_type', [App\Http\Controllers\web_page\RequiredPartsController::class, 'choose_car_type'])->name('web_pages.required_parts.choose_car_type');
         Route::get('/add/{id}', [App\Http\Controllers\web_page\RequiredPartsController::class, 'add'])->name('web_pages.required_parts.add');
         Route::post('/create', [App\Http\Controllers\web_page\RequiredPartsController::class, 'create'])->name('web_pages.required_parts.create');
+        Route::post('/not_interested', [App\Http\Controllers\web_page\RequiredPartsController::class, 'not_interested'])->name('web_pages.required_parts.not_interested');
+        Route::get('/offers_by_me', [App\Http\Controllers\web_page\RequiredPartsController::class, 'offers_by_me'])->name('web_pages.required_parts.offers_by_me');
+        Route::post('/new_part_price', [App\Http\Controllers\web_page\RequiredPartsController::class, 'new_part_price'])->name('web_pages.required_parts.new_part_price');
+        Route::get('/add_offer_photos/{id}', [App\Http\Controllers\web_page\RequiredPartsController::class, 'add_offer_photos'])->name('web_pages.required_parts.add_offer_photos');
+        Route::post('/create_offer_photos', [App\Http\Controllers\web_page\RequiredPartsController::class, 'create_offer_photos'])->name('web_pages.required_parts.create_offer_photos');
+        Route::get('/requested_part_details/{id}', [App\Http\Controllers\web_page\RequiredPartsController::class, 'requested_part_details'])->name('web_pages.required_parts.requested_part_details');
+        Route::get('/add_offer/{id}', [App\Http\Controllers\web_page\RequiredPartsController::class, 'add_offer'])->name('web_pages.required_parts.add_offer');
+        Route::post('/create_offer', [App\Http\Controllers\web_page\RequiredPartsController::class, 'create_offer'])->name('web_pages.required_parts.create_offer');
+        Route::get('/offer_details/{id}', [App\Http\Controllers\web_page\RequiredPartsController::class, 'offer_details'])->name('web_pages.required_parts.offer_details');
+        Route::get('/request_offer_details/{id}', [App\Http\Controllers\web_page\RequiredPartsController::class, 'request_offer_details'])->name('web_pages.required_parts.request_offer_details');
+        Route::get('offer_notification/{id}/{notification_id}', [App\Http\Controllers\web_page\RequiredPartsController::class, 'offer_notification'])->name('web_pages.required_parts.offer_notification');
 
     });
 });

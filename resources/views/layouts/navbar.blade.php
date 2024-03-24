@@ -68,8 +68,8 @@
                                         <i class="fas fa-exclamation-triangle text-warning"></i>  يوجد بلاغ حادث جديد
                                     </a>
                                 @elseif($notif->type == 'offer')
-                                    <a href="#" class="dropdown-item">
-                                        <i class="fas fa-tag text-info"></i> يوجد عرض جديد
+                                    <a href="{{ route('web_pages.required_parts.offer_notification', ['id' => $notif->rec_id,'notification_id'=>$notif->id]) }}" class="dropdown-item">
+                                        <i class="fas fa-tag text-info"></i> يوجد عرض سعر جديد
                                     </a>
                                 @elseif ($notif->type == 'request')
                                     <a href="#" class="dropdown-item">
@@ -107,6 +107,8 @@
                     <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
                         <li><a href="{{ route('web_pages.required_parts.index') }}" class="dropdown-item">القطع المطلوبة</a></li>
                         <li><a href="{{ route('web_pages.required_parts.choose_car_type') }}" class="dropdown-item">الإعلان عن قطعة المطلوبة</a></li>
+                        <li><a href="{{ route('web_pages.required_parts.offers_by_me') }}" class="dropdown-item">عروض بواسطتي</a></li>
+                        <li><a href="" class="dropdown-item">المطلوب بواسطتي</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">

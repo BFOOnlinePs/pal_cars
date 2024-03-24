@@ -75,4 +75,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(AccidentsModel::class,'id','user_id');
     }
+
+    public function request_offers()
+    {
+        return $this->hasMany(RequestOfferModel::class,'id','offer_from_user_id');
+    }
 }
