@@ -96,6 +96,7 @@
             <li><a href="{{route('dashboard.settings.cars_type.index')}}" class="dropdown-item">أنواع السيارات</a></li>
             <li><a href="{{route('dashboard.settings.terms_of_use.index')}}" class="dropdown-item">شروط الاستخدام</a></li>
             <li><a href="{{route('dashboard.settings.cars_colors.index')}}" class="dropdown-item">ألوان السيارات</a></li>
+            <li><a href="" class="dropdown-item">حالات متابعة الحوادث</a></li>
         </ul>
     </li>
 </ul>

@@ -21,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        
         //
         View::composer('*', function ($view) {
             $notifications = NotificationsModel::where('user_id', auth()->id())->where('seen',0)->get();

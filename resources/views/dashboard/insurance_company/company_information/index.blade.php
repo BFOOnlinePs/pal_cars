@@ -124,10 +124,18 @@
 @section('script')
 <script>
     setTimeout(function() {
-        document.getElementById('successAlert').style.display = 'none';
+        // document.getElementById('successAlert').style.display = 'none';
+        var successAlert = document.getElementById('successAlert');
+        if (successAlert) {
+            successAlert.style.display = 'none';
+        }
     }, 3000); // 5000 milliseconds = 5 seconds
     setTimeout(function() {
-        document.getElementById('errorAlert').style.display = 'none';
+        var errorAlert = document.getElementById('errorAlert');
+        if (errorAlert) {
+            errorAlert.style.display = 'none';
+        }
+        // document.getElementById('errorAlert').style.display = 'none';
     }, 3000); // 5000 milliseconds = 5 seconds
 </script>
 @endsection

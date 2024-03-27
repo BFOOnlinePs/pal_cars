@@ -102,6 +102,7 @@
                                 <td>
 
                                 </td>
+
                                 {{-- <td></td> --}}
                                 {{-- <td><a href="{{ route('web_pages.part_expo.details', ['id' => $key->id]) }}" class="btn btn-sm btn-success text-white">تقديم عرض</a></td> --}}
                             </tr>

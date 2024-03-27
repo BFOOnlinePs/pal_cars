@@ -30,6 +30,7 @@ class RequiredPartsController extends Controller
 
         $data = RequestModel::with('car')->whereNotIn('id', $not_interested_parts)
         ->whereNotIn('id',$parts_has_offer)
+        ->where('request_status','!=',0)
         ->orderBy('created_at', 'desc')
         ->get();
 
