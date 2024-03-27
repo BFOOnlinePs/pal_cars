@@ -68,7 +68,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Main Sidebar Container -->
         {{-- @include('layouts.sidebar') --}}
         <!-- Content Wrapper. Contains page content -->
-        @include('layouts.content')
+
+        @if(Route::currentRouteName() === 'web_app_home')
+            @include('layouts.welcome_page_content')
+        @else
+            @include('layouts.content')
+        @endif
+        {{-- @include('layouts.welcome_page_content') --}}
+
+
 
         <div class="modal fade" id="modal-lg-view_attachment">
             <div class="modal-dialog modal-xl">
