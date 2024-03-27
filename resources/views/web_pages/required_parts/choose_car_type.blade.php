@@ -80,9 +80,23 @@
             <br>
             <div class="row justify-content-center">
                 @foreach ($cars as $car)
+                {{-- <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3"> --}}
+                    <div class="card col-lg-2 col-md-3 col-sm-4 col-6 @if(!Request::is('mobile')) ml-3 @endif">
+                        <br>
+                        <a href="{{ auth()->check() ? route('web_pages.required_parts.add', ['id' => $car->id]) : route('login') }}">
+                            <img class="card-img-top" src="{{ asset('storage/uploads/carTypeLogo/' . $car->logo) }}" width="50px" alt="">
+                            <div class="card-body" align="center">
+                                <p class="card-text">{{$car->car_type}}</p>
+                            </div>
+                        </a>
+                    </div>
+                {{-- </div> --}}
+                @endforeach
+            </div>
+            {{-- <div class="row justify-content-center">
+                @foreach ($cars as $car)
                 <div class="card col-md-2 ml-3">
                     <br>
-                    {{-- <h3>{{$car->id}}</h3> --}}
                     <a href="{{ auth()->check() ? route('web_pages.required_parts.add', ['id' => $car->id]) : route('login') }}">
                         <img class="card-img-top" src="{{ asset('storage/uploads/carTypeLogo/' . $car->logo) }}" width="50px" alt="">
                         <div class="card-body" align="center">
@@ -90,7 +104,7 @@
                         </div>
                     </a>
                 </div>
-                @endforeach
+                @endforeach --}}
             </div>
         </div>
     </div>
