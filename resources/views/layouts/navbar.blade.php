@@ -33,7 +33,8 @@
 
 
 <div class="mt-3">
-    <h3>Pal Cars</h3>
+    <a class="btn" href="{{ route('web_app_home') }}"><h3>Pal Cars</h3></a>
+    {{-- <h3>Pal Cars</h3> --}}
 </div>
 <div class="container mt-2">
     <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse"
